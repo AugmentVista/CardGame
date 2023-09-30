@@ -12,21 +12,28 @@ public class Draw_Cards : MonoBehaviour
     public GameObject PlayerArea;
     public GameObject EnemyArea;
 
+    List <GameObject> cards = new List <GameObject>();
 
 
-
-    
     void Start()
     {
-        
+        cards.Add(Card1);
+        cards.Add(Card2);
     }
 
 
     public void OnClick()
-    {
-        GameObject playerCard = Instantiate(Card1, new Vector3(0, 0, 0), Quaternion.identity); // creates a new Card1 at the origin point of 0,0,0
-        playerCard.transform.SetParent(PlayerArea.transform, false);
-
+    { 
+        for (var i = 0; i < 5;  i++)
+        {
+             GameObject playerCard = Instantiate(cards[Random.Range(0, cards.Count)], new Vector3(0, 0, 0), Quaternion.identity); // creates a new Card1 at the origin point of 0,0,0
+             playerCard.transform.SetParent(PlayerArea.transform, false); 
+        }
+        for (var i = 0; i < 5; i++)
+        {
+            GameObject enemyCard = Instantiate(cards[Random.Range(0, cards.Count)], new Vector3(0, 0, 0), Quaternion.identity);
+            enemyCard.transform.SetParent(EnemyArea.transform, false);
+        }
     }
     
 }
