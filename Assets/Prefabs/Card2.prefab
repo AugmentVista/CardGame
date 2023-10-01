@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6940669306753731105}
   - component: {fileID: 911705278401259561}
   - component: {fileID: 8304932638052972114}
+  - component: {fileID: -6187351891368444010}
   m_Layer: 6
   m_Name: Card2
   m_TagString: Untagged
@@ -91,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb61ce26b3769b9438bf5de94dd5e14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Canvas: {fileID: 0}
 --- !u!114 &6940669306753731105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +122,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: -6187351891368444010}
+          m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
+          m_MethodName: OnHoverExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 14
     callback:
       m_PersistentCalls:
@@ -127,6 +141,38 @@ MonoBehaviour:
         - m_Target: {fileID: -1558139388875193542}
           m_TargetAssemblyTypeName: dragDrop, Assembly-CSharp
           m_MethodName: endDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -6187351891368444010}
+          m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
+          m_MethodName: OnHoverEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -6187351891368444010}
+          m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
+          m_MethodName: OnHoverExit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -208,3 +254,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
+--- !u!114 &-6187351891368444010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2512162136882900868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11ec2d8992771be479dba9232227fec7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Canvas: {fileID: 0}
