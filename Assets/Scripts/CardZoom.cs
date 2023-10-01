@@ -28,5 +28,5 @@ public class CardZoom : MonoBehaviour
     public void OnHoverExit()
     {
         Destroy(ZoomCard);
-    }
+    }      
 }
