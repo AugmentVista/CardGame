@@ -77,7 +77,7 @@ public class PlayerManager : NetworkBehaviour
             else
             {
                 card.transform.SetParent(EnemyArea.transform, false);
-                card.GetComponent<CardFlipper>().Flip();
+                card.GetComponent<CardFlipper>().Flip(); // something is weird here the cards flip over in the dropzone when they shouldn't
             }
         }
         else if (type == "Played")
