@@ -1,2 +1,2 @@
 # CardGame
- Card game creating following tutorial 
+ Card game full gameplay to be determined
