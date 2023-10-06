@@ -15,12 +15,12 @@ GameObject:
   - component: {fileID: 5371461544291617758}
   - component: {fileID: -6339164777062988402}
   - component: {fileID: -7419982358047483770}
-  - component: {fileID: -1979507892168138469}
   - component: {fileID: -8234394939295626389}
   - component: {fileID: -841667417936161828}
+  - component: {fileID: -2690542405938734991}
   m_Layer: 6
   m_Name: Card1
-  m_TagString: Untagged
+  m_TagString: Card1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +94,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb61ce26b3769b9438bf5de94dd5e14b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   Canvas: {fileID: 0}
+  DropZone: {fileID: 0}
+  PlayerManager: {fileID: 0}
 --- !u!114 &5371461544291617758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +129,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: -1979507892168138469}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
           m_MethodName: OnHoverExit
           m_Mode: 1
@@ -156,7 +161,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: -1979507892168138469}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
           m_MethodName: OnHoverEnter
           m_Mode: 1
@@ -172,7 +177,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: -1979507892168138469}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: CardZoom, Assembly-CSharp
           m_MethodName: OnHoverExit
           m_Mode: 1
@@ -256,19 +261,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
---- !u!114 &-1979507892168138469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3513485419635015280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11ec2d8992771be479dba9232227fec7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Canvas: {fileID: 0}
 --- !u!114 &-8234394939295626389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,3 +313,17 @@ MonoBehaviour:
   serverOnly: 0
   visible: 0
   hasSpawned: 0
+--- !u!114 &-2690542405938734991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3513485419635015280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0695140e0cff5c14a83fdd39d60caf5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CardFront: {fileID: 21300000, guid: c543fb111e2bf89469d4401b30e72abb, type: 3}
+  CardBack: {fileID: 21300000, guid: 924559c84abe3ea47bd401319eef3433, type: 3}

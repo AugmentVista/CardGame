@@ -14,7 +14,8 @@ public class PlayerManager : NetworkBehaviour
     public GameObject dropZone;
     List<GameObject> cards = new List<GameObject>();
 
-
+    [SyncVar]
+    int cardsPlayed = 0;
 
     public override void OnStartClient()
     {
@@ -34,17 +35,25 @@ public class PlayerManager : NetworkBehaviour
 
     [Command] public void CmdDealCards()
     {
-        for (var i = 0; i < 5; i++)
+        if (cardsPlayed < 10) // limits the amount of cards per player to be placed in the dropzone to 10
         {
-            GameObject card = Instantiate(cards[Random.Range(0, cards.Count)], new Vector2(0, 0), Quaternion.identity); // creates a new Card1 at the origin point of 0,0,0
-            NetworkServer.Spawn(card, connectionToClient);
-            RpcShowCard(card, "Dealt");
+            for (var i = 0; i < 5; i++)
+            {
+                GameObject card = Instantiate(cards[Random.Range(0, cards.Count)], new Vector2(0, 0), Quaternion.identity); // creates a new Card1 at the origin point of 0,0,0
+                NetworkServer.Spawn(card, connectionToClient);
+                RpcShowCard(card, "Dealt");
+            }
         }
+        else
+        { 
+            return; 
+        }    
     }
 
     public void PlayCard(GameObject card)
     {
         CmdPlayCard(card);
+        
 
     }
 
@@ -54,8 +63,6 @@ public class PlayerManager : NetworkBehaviour
         RpcShowCard(card, "Played");
     
     }
-
-
 
 
     [ClientRpc]
@@ -70,12 +77,21 @@ public class PlayerManager : NetworkBehaviour
             else
             {
                 card.transform.SetParent(EnemyArea.transform, false);
+                card.GetComponent<CardFlipper>().Flip();
             }
         }
         else if (type == "Played")
         {
             card.transform.SetParent(dropZone.transform, false);
-        
+            cardsPlayed++;
+            // something something for each card played with tag card1 or card2 increase a UI element on screen of cheese cards played vs cracker cards played
+            Debug.Log("Local cards played = " + cardsPlayed);
+            if (isOwned)
+            {
+                card.GetComponent<CardFlipper>().Flip();
+            
+            
+            }
         }
     }
 
