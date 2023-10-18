@@ -812,7 +812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 718332594896764454, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 718332594896764454, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
       propertyPath: m_AnchorMin.x
@@ -820,7 +820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 718332594896764454, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 718332594896764454, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
       propertyPath: m_SizeDelta.x
@@ -872,11 +872,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 718332594896764454, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000097413
+      value: -0.000097412725
       objectReference: {fileID: 0}
     - target: {fileID: 718332594896764454, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 457.46
+      value: 1.4599732
       objectReference: {fileID: 0}
     - target: {fileID: 718332594896764454, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -893,6 +893,10 @@ PrefabInstance:
     - target: {fileID: 7183714044091894719, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
       propertyPath: m_Name
       value: DropZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183714044091894719, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

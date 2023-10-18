@@ -6,7 +6,7 @@ using Mirror;
 
 public class PlayerManager : NetworkBehaviour
 {
-
+    
     public GameObject Card1;
     public GameObject Card2;
     public GameObject PlayerArea;
@@ -16,6 +16,7 @@ public class PlayerManager : NetworkBehaviour
 
     [SyncVar]
     int cardsPlayed = 0;
+    int cardsDrawn = 0;
 
     public override void OnStartClient()
     {
@@ -23,6 +24,7 @@ public class PlayerManager : NetworkBehaviour
         PlayerArea = GameObject.Find("PlayerArea");
         EnemyArea = GameObject.Find("EnemyArea");
         dropZone = GameObject.Find("DropZone");
+        
     }
 
 
@@ -35,13 +37,14 @@ public class PlayerManager : NetworkBehaviour
 
     [Command] public void CmdDealCards()
     {
-        if (cardsPlayed <= 10) // limits the amount of cards per player to be placed in the dropzone to 10
+        if (cardsPlayed <= 10 && cardsDrawn <= 5) // limits the amount of cards per player to be placed in the dropzone to 10
         {
             for (var i = 0; i < 5; i++)
             {
                 GameObject card = Instantiate(cards[Random.Range(0, cards.Count)], new Vector2(0, 0), Quaternion.identity); // creates a new Card1 at the origin point of 0,0,0
                 NetworkServer.Spawn(card, connectionToClient);
                 RpcShowCard(card, "Dealt");
+                cardsDrawn++;
             }
         }
         else
@@ -87,11 +90,7 @@ public class PlayerManager : NetworkBehaviour
             if (isOwned)
             {
                 card.GetComponent<CardFlipper>().Flip();
-            
-            
             }
         }
-    }
-
-    
+    }   
 }
