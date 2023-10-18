@@ -35,7 +35,7 @@ public class PlayerManager : NetworkBehaviour
 
     [Command] public void CmdDealCards()
     {
-        if (cardsPlayed < 10) // limits the amount of cards per player to be placed in the dropzone to 10
+        if (cardsPlayed <= 10) // limits the amount of cards per player to be placed in the dropzone to 10
         {
             for (var i = 0; i < 5; i++)
             {
@@ -53,8 +53,6 @@ public class PlayerManager : NetworkBehaviour
     public void PlayCard(GameObject card)
     {
         CmdPlayCard(card);
-        
-
     }
 
     [Command]
