@@ -13,14 +13,12 @@ public class CardFlipper : NetworkBehaviour
     public Sprite CardFront;
     public Sprite CardBack;
 
-    /*private void Start()
+    private void Start()
     {
         DragDrop = GetComponent<dragDrop>();
         NetworkIdentity networkIdentity = NetworkClient.connection.identity;
         PlayerManager = networkIdentity.GetComponent<PlayerManager>();
-    }*/
-
-
+    }
 
     public void Flip()
     {
@@ -36,18 +34,22 @@ public class CardFlipper : NetworkBehaviour
         }
     }
 
+
+
+
     [ClientRpc]
-    public void RpcOnClick(GameObject card)
+    public void RpcOnClick()
     {
-        DragDrop = GetComponent<dragDrop>();
-        NetworkIdentity networkIdentity = NetworkClient.connection.identity;
-        PlayerManager = networkIdentity.GetComponent<PlayerManager>();
+        Debug.Log("You have clicked on a card");
+        
 
-
-        if (isOwned && !DragDrop.IsDraggable && !hasBeenFlipped)
+        if (isOwned && PlayerManager.cardInDropZone) //!hasBeenFlipped)
         {
-         Flip();
-        hasBeenFlipped = true;
+            Debug.Log("Flip should be working");
+            Flip();
+            hasBeenFlipped = true;
+            Debug.Log("Flip has worked");
         }
+        //PlayerManager.cardInDropZone = false;
     }
 }

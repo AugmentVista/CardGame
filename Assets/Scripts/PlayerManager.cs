@@ -13,6 +13,8 @@ public class PlayerManager : NetworkBehaviour
     public GameObject EnemyArea;
     public GameObject dropZone;
     List<GameObject> cards = new List<GameObject>();
+    public bool cardInDropZone = false;
+
 
     [SyncVar]
     int cardsPlayed = 0;
@@ -24,7 +26,8 @@ public class PlayerManager : NetworkBehaviour
         PlayerArea = GameObject.Find("PlayerArea");
         EnemyArea = GameObject.Find("EnemyArea");
         dropZone = GameObject.Find("DropZone");
-        
+       
+
     }
 
 
@@ -37,11 +40,11 @@ public class PlayerManager : NetworkBehaviour
 
     [Command] public void CmdDealCards()
     {
-        if (cardsPlayed <= 10 && cardsDrawn <= 5) // limits the amount of cards per player to be placed in the dropzone to 10
+        if (cardsPlayed <= 10 && cardsDrawn <= 5)
         {
             for (var i = 0; i < 5; i++)
             {
-                GameObject card = Instantiate(cards[Random.Range(0, cards.Count)], new Vector2(0, 0), Quaternion.identity); // creates a new Card1 at the origin point of 0,0,0
+                GameObject card = Instantiate(cards[Random.Range(0, cards.Count)], new Vector2(0, 0), Quaternion.identity);
                 NetworkServer.Spawn(card, connectionToClient);
                 RpcShowCard(card, "Dealt");
                 cardsDrawn++;
@@ -83,9 +86,10 @@ public class PlayerManager : NetworkBehaviour
         }
         else if (type == "Played")
         {
+
             card.transform.SetParent(dropZone.transform, false);
             cardsPlayed++;
-            // something something for each card played with tag card1 or card2 increase a UI element on screen of cheese cards played vs cracker cards played
+            cardInDropZone = true;
             Debug.Log("Local cards played = " + cardsPlayed);
             if (isOwned)
             {
