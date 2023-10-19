@@ -14,6 +14,7 @@ public class PlayerManager : NetworkBehaviour
     public GameObject dropZone;
     List<GameObject> cards = new List<GameObject>();
     ScoreText scoreText;
+    
 
 
     [SyncVar]
@@ -34,15 +35,16 @@ public class PlayerManager : NetworkBehaviour
     {
         scoreText = FindObjectOfType<ScoreText>();
         scoreText.CountText.enabled = true;
+        scoreText.rulesText.enabled = true;
         cards.Add(Card1);
         cards.Add(Card2);
     }
 
     [Command] public void CmdDealCards()
     {
-        if (cardsPlayed <= 10 && cardsDrawn <= 5)
+        if (cardsPlayed <= 10 && cardsDrawn <= 8)
         {
-            for (var i = 0; i < 5; i++)
+            for (var i = 0; i < 2; i++)
             {
                 GameObject card = Instantiate(cards[Random.Range(0, cards.Count)], new Vector2(0, 0), Quaternion.identity);
                 NetworkServer.Spawn(card, connectionToClient);

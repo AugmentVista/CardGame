@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -15,7 +16,7 @@ public class WinScreen : MonoBehaviour
     }
     public void Win()
     {
-            if (ScoreText.WinScore > 15)
+            if (ScoreText.WinScore == 15)
             {
                 WinText.SetActive(true);
             }

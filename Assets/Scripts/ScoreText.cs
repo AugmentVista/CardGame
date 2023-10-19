@@ -8,6 +8,7 @@ public class ScoreText : MonoBehaviour
 {
     public GameObject DropZone;
     public TextMeshProUGUI CountText;
+    public TextMeshProUGUI rulesText;
     public WinScreen winScreen;
     private int Card1inPlay; // Initialize to 0
     private int Card2inPlay; // Initialize to 0
@@ -20,6 +21,7 @@ public class ScoreText : MonoBehaviour
 
     private void Start()
     {
+        rulesText.enabled = false;
         CountText.enabled = false;
     }
 
@@ -34,17 +36,17 @@ public class ScoreText : MonoBehaviour
             cardFlipBool = false;
         }
         var childGameObject = cardFlipper.gameObject;
-        //Debug.Log(childGameObject.name == "Card1");
+        
         if (childGameObject.name.StartsWith("Card1") && cardFlipper.currentSprite == cardFlipper.CardBack && cardFlipBool)
         {
-            Debug.Log("We did it");
+            
             Card1inPlay++;
             Score += Card1Value;
             CountText.text = Score.ToString();
         }
         if (childGameObject.name.StartsWith("Card2") && cardFlipper.currentSprite == cardFlipper.CardBack && cardFlipBool)
         {
-            Debug.Log("We did it");
+            
             Card2inPlay++;
             Score += Card2Value;
             CountText.text = Score.ToString();

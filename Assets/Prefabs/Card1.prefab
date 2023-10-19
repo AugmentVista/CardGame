@@ -73,7 +73,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c543fb111e2bf89469d4401b30e72abb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a716c5da7522b9446bfe4a29bae96fad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -307,7 +307,7 @@ MonoBehaviour:
   ScoreText: {fileID: 0}
   PlayerManager: {fileID: 0}
   DropZone: {fileID: 0}
-  CardFront: {fileID: 21300000, guid: c543fb111e2bf89469d4401b30e72abb, type: 3}
+  CardFront: {fileID: 21300000, guid: a716c5da7522b9446bfe4a29bae96fad, type: 3}
   CardBack: {fileID: 21300000, guid: 924559c84abe3ea47bd401319eef3433, type: 3}
   timesFlipped: 0
   currentSprite: {fileID: 0}
