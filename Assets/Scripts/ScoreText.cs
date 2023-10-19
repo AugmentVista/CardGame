@@ -12,8 +12,10 @@ public class ScoreText : MonoBehaviour
     public WinScreen winScreen;
     private int Card1inPlay; // Initialize to 0
     private int Card2inPlay; // Initialize to 0
+    private int Card3inPlay;
     public int Card1Value = 1;
     public int Card2Value = 2;
+    public int Card3Value = 3;
     public int WinScore;
     public int Score;
     public int WinThresholdValue = 15;
@@ -51,11 +53,18 @@ public class ScoreText : MonoBehaviour
             Score += Card2Value;
             CountText.text = Score.ToString();
         }
+        if (childGameObject.name.StartsWith("Card3") && cardFlipper.currentSprite == cardFlipper.CardBack && cardFlipBool)
+        {
+
+            Card3inPlay++;
+            Score += Card3Value;
+            CountText.text = Score.ToString();
+        }
         //Debug.Log("Number of Card1 in play: " + Card1inPlay);
         //Debug.Log("Number of Card2 in play: " + Card2inPlay);
         //Debug.Log(Card1Value);
         //Debug.Log(Card2Value);
-        
+
         UpdateUI();
     }
     public void UpdateUI()

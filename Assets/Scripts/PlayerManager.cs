@@ -9,6 +9,7 @@ public class PlayerManager : NetworkBehaviour
     
     public GameObject Card1;
     public GameObject Card2;
+    public GameObject Card3;
     public GameObject PlayerArea;
     public GameObject EnemyArea;
     public GameObject dropZone;
@@ -27,8 +28,6 @@ public class PlayerManager : NetworkBehaviour
         PlayerArea = GameObject.Find("PlayerArea");
         EnemyArea = GameObject.Find("EnemyArea");
         dropZone = GameObject.Find("DropZone");
-       
-
     }
     [Server]
     public override void OnStartServer()
@@ -38,6 +37,16 @@ public class PlayerManager : NetworkBehaviour
         scoreText.rulesText.enabled = true;
         cards.Add(Card1);
         cards.Add(Card2);
+        cards.Add(Card3);
+
+        if (Card3 != null)
+        {
+            // Your code that uses Card3
+        }
+        else
+        {
+            Debug.LogError("Card3 is not assigned.");
+        }
     }
 
     [Command] public void CmdDealCards()

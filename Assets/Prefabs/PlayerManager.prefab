@@ -137,6 +137,7 @@ MonoBehaviour:
   syncInterval: 0
   Card1: {fileID: 3513485419635015280, guid: 9df5b0210140faf41997229c63e6591d, type: 3}
   Card2: {fileID: 2512162136882900868, guid: 805727aa65c629142a1ed52019dd602b, type: 3}
+  Card3: {fileID: 5352877499072740421, guid: accd67c24e7aa604f89c67dac039b278, type: 3}
   PlayerArea: {fileID: 3795457205046441309, guid: 9a3f90f7a93983f4ca10e1729becbc5c, type: 3}
   EnemyArea: {fileID: 3618154097174121613, guid: db788cdaf92de6f409b399f6595090ad, type: 3}
   dropZone: {fileID: 7183714044091894719, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
