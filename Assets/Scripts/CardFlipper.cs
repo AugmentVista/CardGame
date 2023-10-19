@@ -11,7 +11,7 @@ public class CardFlipper : NetworkBehaviour
     public Sprite CardFront;
     public Sprite CardBack;
     public int timesFlipped = 0;
-
+    public Sprite currentSprite;
 
     public void Start()
     {
@@ -21,7 +21,7 @@ public class CardFlipper : NetworkBehaviour
 
     public void Flip()
     {
-        Sprite currentSprite = gameObject.GetComponent<Image>().sprite;
+        currentSprite = gameObject.GetComponent<Image>().sprite;
         timesFlipped++;
         Debug.Log("Times Flipped: " + timesFlipped.ToString());
 
@@ -36,7 +36,7 @@ public class CardFlipper : NetworkBehaviour
     }
 
    
-
+    // leave this alone
     [Command (requiresAuthority = false)]
     public void CmdOnClick()
     { 
@@ -52,9 +52,9 @@ public class CardFlipper : NetworkBehaviour
         {
             Debug.Log("Flip should be working");
             Flip();
-            ScoreText.OnFlip();
+            ScoreText.OnFlip(this);
             Debug.Log("Flip has worked");
         }
-        //PlayerManager.cardInDropZone = false;
+        
     }
 }

@@ -13,7 +13,7 @@ public class PlayerManager : NetworkBehaviour
     public GameObject EnemyArea;
     public GameObject dropZone;
     List<GameObject> cards = new List<GameObject>();
-    
+    ScoreText scoreText;
 
 
     [SyncVar]
@@ -32,6 +32,8 @@ public class PlayerManager : NetworkBehaviour
     [Server]
     public override void OnStartServer()
     {
+        scoreText = FindObjectOfType<ScoreText>();
+        scoreText.CountText.enabled = true;
         cards.Add(Card1);
         cards.Add(Card2);
     }
@@ -88,7 +90,7 @@ public class PlayerManager : NetworkBehaviour
             Debug.Log("Local cards played = " + cardsPlayed);
             if (isOwned)
             {
-                Debug.Log("A");
+                
                 card.GetComponent<CardFlipper>().Flip(); // when card is placed into dropzone
             }
         }
