@@ -13,7 +13,7 @@ public class PlayerManager : NetworkBehaviour
     public GameObject EnemyArea;
     public GameObject dropZone;
     List<GameObject> cards = new List<GameObject>();
-    public bool cardInDropZone = false;
+    
 
 
     [SyncVar]
@@ -29,8 +29,6 @@ public class PlayerManager : NetworkBehaviour
        
 
     }
-
-
     [Server]
     public override void OnStartServer()
     {
@@ -55,7 +53,6 @@ public class PlayerManager : NetworkBehaviour
             return; 
         }    
     }
-
     public void PlayCard(GameObject card)
     {
         CmdPlayCard(card);
@@ -67,8 +64,6 @@ public class PlayerManager : NetworkBehaviour
         RpcShowCard(card, "Played");
     
     }
-
-
     [ClientRpc]
     void RpcShowCard(GameObject card, string type)
     {
@@ -89,11 +84,12 @@ public class PlayerManager : NetworkBehaviour
 
             card.transform.SetParent(dropZone.transform, false);
             cardsPlayed++;
-            cardInDropZone = true;
+            
             Debug.Log("Local cards played = " + cardsPlayed);
             if (isOwned)
             {
-                card.GetComponent<CardFlipper>().Flip();
+                Debug.Log("A");
+                card.GetComponent<CardFlipper>().Flip(); // when card is placed into dropzone
             }
         }
     }   

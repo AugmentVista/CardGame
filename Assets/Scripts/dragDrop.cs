@@ -10,6 +10,7 @@ public class dragDrop : NetworkBehaviour
     public PlayerManager PlayerManager;
 
     private bool isDragging = false;
+    public bool cardInDropZone = false;
     private bool isOverDropZone = false;
     public bool IsDraggable = true;
     private GameObject dropZone;
@@ -63,6 +64,7 @@ public class dragDrop : NetworkBehaviour
         {
             transform.SetParent(dropZone.transform, false);
             IsDraggable = false;
+            cardInDropZone = true;
             NetworkIdentity networkIdentity = NetworkClient.connection.identity;
             PlayerManager = networkIdentity.GetComponent<PlayerManager>();
             PlayerManager.PlayCard(gameObject);

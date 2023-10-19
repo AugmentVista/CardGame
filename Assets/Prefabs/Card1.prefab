@@ -101,6 +101,7 @@ MonoBehaviour:
   Canvas: {fileID: 0}
   DropZone: {fileID: 0}
   PlayerManager: {fileID: 0}
+  cardInDropZone: 0
   IsDraggable: 1
 --- !u!114 &5371461544291617758
 MonoBehaviour:
@@ -153,7 +154,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: -2690542405938734991}
           m_TargetAssemblyTypeName: CardFlipper, Assembly-CSharp
-          m_MethodName: RpcOnClick
+          m_MethodName: CmdOnClick
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -307,6 +308,7 @@ MonoBehaviour:
   hasBeenFlipped: 0
   CardFront: {fileID: 21300000, guid: c543fb111e2bf89469d4401b30e72abb, type: 3}
   CardBack: {fileID: 21300000, guid: 924559c84abe3ea47bd401319eef3433, type: 3}
+  timesFlipped: 0
 --- !u!114 &-7279952850997757495
 MonoBehaviour:
   m_ObjectHideFlags: 0

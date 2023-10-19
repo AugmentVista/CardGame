@@ -1,28 +1,29 @@
 using Mirror;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CardFlipper : NetworkBehaviour
 {
     public dragDrop DragDrop;
+    public ScoreText ScoreText;
     public PlayerManager PlayerManager;
-
-    public bool hasBeenFlipped = false;
+    public GameObject DropZone;
     public Sprite CardFront;
     public Sprite CardBack;
+    public int timesFlipped = 0;
 
-    private void Start()
+
+    public void Start()
     {
-        DragDrop = GetComponent<dragDrop>();
-        NetworkIdentity networkIdentity = NetworkClient.connection.identity;
-        PlayerManager = networkIdentity.GetComponent<PlayerManager>();
+        DropZone = GameObject.Find("DropZone");
+        ScoreText = GameObject.Find("CountText").GetComponent<ScoreText>();
     }
 
     public void Flip()
     {
         Sprite currentSprite = gameObject.GetComponent<Image>().sprite;
+        timesFlipped++;
+        Debug.Log("Times Flipped: " + timesFlipped.ToString());
 
         if (currentSprite == CardFront)
         {
@@ -34,20 +35,24 @@ public class CardFlipper : NetworkBehaviour
         }
     }
 
+   
 
-
-
-    [ClientRpc]
-    public void RpcOnClick()
-    {
+    [Command (requiresAuthority = false)]
+    public void CmdOnClick()
+    { 
+        DragDrop = GetComponent<dragDrop>();
+        NetworkIdentity networkIdentity = NetworkClient.connection.identity;
+        PlayerManager = networkIdentity.GetComponent<PlayerManager>();
+        if (!isServer)
+        {
+            Debug.Log("I am the Client");
+        }
         Debug.Log("You have clicked on a card");
-        
-
-        if (isOwned && PlayerManager.cardInDropZone) //!hasBeenFlipped)
+        if (/*isOwned &&*/ DragDrop.cardInDropZone) //!hasBeenFlipped)
         {
             Debug.Log("Flip should be working");
             Flip();
-            hasBeenFlipped = true;
+            ScoreText.OnFlip();
             Debug.Log("Flip has worked");
         }
         //PlayerManager.cardInDropZone = false;
