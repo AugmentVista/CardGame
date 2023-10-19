@@ -15,9 +15,6 @@ public class ScoreText : MonoBehaviour
     public WinScreen winScreen;
     public int WinThresholdValue = 15;
 
-    
-
-
 
     private void Update()
     {
@@ -52,7 +49,7 @@ public class ScoreText : MonoBehaviour
     {
         CountText.text = ((Card1Value * Card1inPlay) + (Card2Value * Card2inPlay)).ToString();
 
-        int WinScore = (Card1Value * Card1inPlay) + (Card2Value * Card2inPlay);
+        WinScore = (Card1Value * Card1inPlay) + (Card2Value * Card2inPlay);
         Debug.Log("Winscore is: " + WinScore);
         winScreen.Win();
     }
