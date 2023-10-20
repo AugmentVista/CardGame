@@ -15,9 +15,9 @@ public class WinScreen : MonoBehaviour
     {
         ScoreText = GameObject.Find("CountText").GetComponent<ScoreText>();
         WinText.SetActive(false);
-        ScoreText.WinScore = Random.Range(12, 25);
+        ScoreText.WinScore = Random.Range(12, 20);
 
-        randomWinScore = Random.Range(12, 25);
+        randomWinScore = Random.Range(12, 20);
         rulesText.text = "Exact score of " + randomWinScore.ToString() + " to Win ";
     }
     public void Win()
