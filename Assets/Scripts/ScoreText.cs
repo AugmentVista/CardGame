@@ -18,7 +18,6 @@ public class ScoreText : MonoBehaviour
     public int Card3Value = 3;
     public int WinScore;
     public int Score;
-    public int WinThresholdValue = 15;
     public bool cardFlipBool;
 
     private void Start()
@@ -44,21 +43,21 @@ public class ScoreText : MonoBehaviour
             
             Card1inPlay++;
             Score += Card1Value;
-            CountText.text = Score.ToString();
+            CountText.text = "Current Score " + Score.ToString();
         }
         if (childGameObject.name.StartsWith("Card2") && cardFlipper.currentSprite == cardFlipper.CardBack && cardFlipBool)
         {
             
             Card2inPlay++;
             Score += Card2Value;
-            CountText.text = Score.ToString();
+            CountText.text = "Current Score " + Score.ToString();
         }
         if (childGameObject.name.StartsWith("Card3") && cardFlipper.currentSprite == cardFlipper.CardBack && cardFlipBool)
         {
 
             Card3inPlay++;
             Score += Card3Value;
-            CountText.text = Score.ToString();
+            CountText.text = "Current Score " + Score.ToString();
         }
         //Debug.Log("Number of Card1 in play: " + Card1inPlay);
         //Debug.Log("Number of Card2 in play: " + Card2inPlay);

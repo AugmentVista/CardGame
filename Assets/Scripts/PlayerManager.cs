@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
-
+using TMPro;
 
 public class PlayerManager : NetworkBehaviour
 {
-    
+    public WinScreen winScreen;
     public GameObject Card1;
     public GameObject Card2;
     public GameObject Card3;
@@ -15,6 +15,7 @@ public class PlayerManager : NetworkBehaviour
     public GameObject dropZone;
     List<GameObject> cards = new List<GameObject>();
     ScoreText scoreText;
+    
     
 
 
@@ -28,6 +29,7 @@ public class PlayerManager : NetworkBehaviour
         PlayerArea = GameObject.Find("PlayerArea");
         EnemyArea = GameObject.Find("EnemyArea");
         dropZone = GameObject.Find("DropZone");
+        
     }
     [Server]
     public override void OnStartServer()
@@ -35,25 +37,19 @@ public class PlayerManager : NetworkBehaviour
         scoreText = FindObjectOfType<ScoreText>();
         scoreText.CountText.enabled = true;
         scoreText.rulesText.enabled = true;
+        //scoreText.rulesText.text = winScreen.randomWinScore.ToString();
         cards.Add(Card1);
         cards.Add(Card2);
         cards.Add(Card3);
-
-        if (Card3 != null)
-        {
-            // Your code that uses Card3
-        }
-        else
-        {
-            Debug.LogError("Card3 is not assigned.");
-        }
+        
+        
     }
 
     [Command] public void CmdDealCards()
     {
         if (cardsPlayed <= 10 && cardsDrawn <= 8)
         {
-            for (var i = 0; i < 2; i++)
+            for (var i = 0; i < 1; i++)
             {
                 GameObject card = Instantiate(cards[Random.Range(0, cards.Count)], new Vector2(0, 0), Quaternion.identity);
                 NetworkServer.Spawn(card, connectionToClient);
