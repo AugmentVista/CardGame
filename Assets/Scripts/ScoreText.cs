@@ -10,8 +10,8 @@ public class ScoreText : MonoBehaviour
     public TextMeshProUGUI CountText;
     public TextMeshProUGUI rulesText;
     public WinScreen winScreen;
-    private int Card1inPlay; // Initialize to 0
-    private int Card2inPlay; // Initialize to 0
+    private int Card1inPlay; 
+    private int Card2inPlay; 
     private int Card3inPlay;
     public int Card1Value = 1;
     public int Card2Value = 2;

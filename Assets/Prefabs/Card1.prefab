@@ -154,7 +154,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: -2690542405938734991}
           m_TargetAssemblyTypeName: CardFlipper, Assembly-CSharp
-          m_MethodName: CmdOnClick
+          m_MethodName: CmdFlipCard
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

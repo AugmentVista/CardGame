@@ -13,12 +13,9 @@ public class PlayerManager : NetworkBehaviour
     public GameObject PlayerArea;
     public GameObject EnemyArea;
     public GameObject dropZone;
-    List<GameObject> cards = new List<GameObject>();
     ScoreText scoreText;
+    List<GameObject> cards = new List<GameObject>();
     
-    
-
-
     [SyncVar]
     int cardsPlayed = 0;
     int cardsDrawn = 0;
@@ -37,7 +34,7 @@ public class PlayerManager : NetworkBehaviour
         scoreText = FindObjectOfType<ScoreText>();
         scoreText.CountText.enabled = true;
         scoreText.rulesText.enabled = true;
-        //scoreText.rulesText.text = winScreen.randomWinScore.ToString();
+        
         cards.Add(Card1);
         cards.Add(Card2);
         cards.Add(Card3);
