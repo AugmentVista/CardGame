@@ -59,11 +59,6 @@ public class ScoreText : MonoBehaviour
             Score += Card3Value;
             CountText.text = "Current Score " + Score.ToString();
         }
-        //Debug.Log("Number of Card1 in play: " + Card1inPlay);
-        //Debug.Log("Number of Card2 in play: " + Card2inPlay);
-        //Debug.Log(Card1Value);
-        //Debug.Log(Card2Value);
-
         UpdateUI();
     }
     public void UpdateUI()

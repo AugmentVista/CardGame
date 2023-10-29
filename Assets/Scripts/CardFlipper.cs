@@ -2,7 +2,7 @@ using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardFlipper : NetworkBehaviour
+public class CardFlipper : MonoBehaviour
 {
     public dragDrop DragDrop;
     public ScoreText ScoreText;
@@ -12,9 +12,6 @@ public class CardFlipper : NetworkBehaviour
     public Sprite CardBack;
     public int timesFlipped = 0;
     public Sprite currentSprite;
-
-
-    [SyncVar]
     private bool isFlipped = false;
 
     public void Start()
@@ -25,16 +22,6 @@ public class CardFlipper : NetworkBehaviour
         DragDrop = GetComponent<dragDrop>();
         UpdateVisualState();
     }
-
-    [Command]
-    public void CmdFlipCard()
-    {
-        if (!isFlipped)
-        {
-            isFlipped = true;
-        }
-    }
-
     void UpdateVisualState()
     {
         if (isFlipped)
@@ -46,14 +33,6 @@ public class CardFlipper : NetworkBehaviour
             gameObject.GetComponent<Image>().sprite = CardBack;
         }
     }
-
-    [ClientRpc]
-    public void RpcUpdateCardFlipState(bool flipped)
-    {
-        isFlipped = flipped;
-        UpdateVisualState();
-    }
-
     public void Flip()
     {
         if (timesFlipped < 2)
@@ -76,9 +55,7 @@ public class CardFlipper : NetworkBehaviour
         }
     }
 
-    // Update this method to be a [Command] method, not a local method
-    [Command]
-    public void CmdFlipCard1()
+    public void FlipCard()
     {
         Debug.Log("DragDrop: " + DragDrop);
         Debug.Log("ScoreText: " + ScoreText);
@@ -88,34 +65,7 @@ public class CardFlipper : NetworkBehaviour
         {
             Flip();
             ScoreText.OnFlip(this);
-            // Notify clients to update the card's flipped state
-            RpcUpdateCardFlipState(gameObject, timesFlipped);
-        }
-    }
-
-    // This method is called on clients to update the card's flipped state
-    [ClientRpc]
-    void RpcUpdateCardFlipState(GameObject card, int flipCount)
-    {
-        // Make sure the card object is the same on all clients
-        if (isLocalPlayer)
-        {
-            // Update the card's state based on the received flipCount
-            timesFlipped = flipCount;
-
-            // Update the visual representation of the card
-            if (timesFlipped < 2)
-            {
-                currentSprite = card.GetComponent<Image>().sprite;
-                if (currentSprite == CardFront)
-                {
-                    card.GetComponent<Image>().sprite = CardBack;
-                }
-                else
-                {
-                    card.GetComponent<Image>().sprite = CardFront;
-                }
-            }
+            
         }
     }
 }

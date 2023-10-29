@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class dragDrop : NetworkBehaviour
+public class dragDrop : MonoBehaviour
 {
     public GameObject Canvas;
     public GameObject DropZone;
@@ -21,10 +21,7 @@ public class dragDrop : NetworkBehaviour
     {
         Canvas = GameObject.Find("Main Canvas");
         DropZone = GameObject.Find("DropZone");
-        if (!isOwned)
-        {
-            IsDraggable = false;
-        }
+       
     }
     void Update()
     {
@@ -65,8 +62,7 @@ public class dragDrop : NetworkBehaviour
             transform.SetParent(dropZone.transform, false);
             IsDraggable = false;
             cardInDropZone = true;
-            NetworkIdentity networkIdentity = NetworkClient.connection.identity;
-            PlayerManager = networkIdentity.GetComponent<PlayerManager>();
+            PlayerManager = GetComponent<PlayerManager>();
             PlayerManager.PlayCard(gameObject);
         }
         else 

@@ -4,7 +4,7 @@ using UnityEngine;
 using Mirror;
 using TMPro;
 
-public class PlayerManager : NetworkBehaviour
+public class PlayerManager : MonoBehaviour
 {
     public WinScreen winScreen;
     public GameObject Card1;
@@ -15,71 +15,54 @@ public class PlayerManager : NetworkBehaviour
     public GameObject dropZone;
     ScoreText scoreText;
     List<GameObject> cards = new List<GameObject>();
-    
-    [SyncVar]
     int cardsPlayed = 0;
     int cardsDrawn = 0;
 
-    public override void OnStartClient()
+    private void Start()
     {
-        base.OnStartClient();
         PlayerArea = GameObject.Find("PlayerArea");
         EnemyArea = GameObject.Find("EnemyArea");
         dropZone = GameObject.Find("DropZone");
-        
-    }
-    [Server]
-    public override void OnStartServer()
-    {
         scoreText = FindObjectOfType<ScoreText>();
         scoreText.CountText.enabled = true;
         scoreText.rulesText.enabled = true;
-        
+
         cards.Add(Card1);
         cards.Add(Card2);
         cards.Add(Card3);
-        
-        
     }
-
-    [Command] public void CmdDealCards()
+    public void DealCards()
     {
-        if (cardsPlayed <= 10 && cardsDrawn <= 8)
+        if (cardsPlayed <= 10 && cardsDrawn <= 8 && cards.Count > 0)
         {
-            for (var i = 0; i < 1; i++)
+            for (var i = 0; i < 2; i++) // Change to draw 2 cards
             {
-                GameObject card = Instantiate(cards[Random.Range(0, cards.Count)], new Vector2(0, 0), Quaternion.identity);
-                NetworkServer.Spawn(card, connectionToClient);
-                RpcShowCard(card, "Dealt");
+                int randomIndex = Random.Range(0, cards.Count);
+                GameObject card = Instantiate(cards[randomIndex], new Vector2(0, 0), Quaternion.identity);
+                ShowCard(card, "Dealt");
                 cardsDrawn++;
             }
         }
         else
-        { 
-            return; 
-        }    
+        {
+            // Handle the case where you can't deal more cards, e.g., display a message.
+            return;
+        }
     }
     public void PlayCard(GameObject card)
     {
-        CmdPlayCard(card);
-    }
-
-    [Command]
-    void CmdPlayCard(GameObject card)
-    {
-        RpcShowCard(card, "Played");
+        ShowCard(card, "Played");
     
     }
-    [ClientRpc]
-    void RpcShowCard(GameObject card, string type)
+    void ShowCard(GameObject card, string type)
     {
         if (type == "Dealt")
         {
-            if (isOwned)
+            /*if (isOwned)  change to reference AI cards
             {
                 card.transform.SetParent(PlayerArea.transform, false);
             }
-            else
+            else*/
             {
                 card.transform.SetParent(EnemyArea.transform, false);
                 card.GetComponent<CardFlipper>().Flip(); // something is weird here the cards flip over in the dropzone when they shouldn't
@@ -92,11 +75,11 @@ public class PlayerManager : NetworkBehaviour
             cardsPlayed++;
             
             Debug.Log("Local cards played = " + cardsPlayed);
-            if (isOwned)
+            /*if (isOwned) // change to reference AI cards
             {
                 
                 card.GetComponent<CardFlipper>().Flip(); // when card is placed into dropzone
-            }
+            }*/
         }
     }   
 }

@@ -11,8 +11,6 @@ public class Draw_Cards : MonoBehaviour
 
     public void OnClick()
     {
-        NetworkIdentity networkIdentity = NetworkClient.connection.identity;
-        PlayerManager = networkIdentity.GetComponent<PlayerManager>();
-        PlayerManager.CmdDealCards();
+        PlayerManager.DealCards();
     }
 }
