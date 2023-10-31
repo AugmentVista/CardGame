@@ -1,4 +1,4 @@
-using Mirror;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,7 +35,7 @@ public class CardFlipper : MonoBehaviour
     }
     public void Flip()
     {
-        if (timesFlipped < 2)
+        if (timesFlipped <= 2)
         {
             timesFlipped++;
             Debug.Log("Times Flipped: " + timesFlipped.ToString());
@@ -61,7 +61,7 @@ public class CardFlipper : MonoBehaviour
         Debug.Log("ScoreText: " + ScoreText);
         Debug.Log("gameObject: " + gameObject);
         // Check if the card is in the DropZone, so it can be flipped
-        if (timesFlipped < 2 && DragDrop.cardInDropZone)
+        if (timesFlipped <= 2 && DragDrop.cardInDropZone)
         {
             Flip();
             ScoreText.OnFlip(this);

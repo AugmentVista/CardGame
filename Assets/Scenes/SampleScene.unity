@@ -670,6 +670,7 @@ MonoBehaviour:
   Card1: {fileID: 3513485419635015280, guid: 9df5b0210140faf41997229c63e6591d, type: 3}
   Card2: {fileID: 2512162136882900868, guid: 805727aa65c629142a1ed52019dd602b, type: 3}
   Card3: {fileID: 5352877499072740421, guid: accd67c24e7aa604f89c67dac039b278, type: 3}
+  Card4: {fileID: 5352877499072740421, guid: a175f50b84077aa4a9d374e85a2dd6ca, type: 3}
   PlayerArea: {fileID: 3795457205046441309, guid: 9a3f90f7a93983f4ca10e1729becbc5c, type: 3}
   EnemyArea: {fileID: 3618154097174121613, guid: db788cdaf92de6f409b399f6595090ad, type: 3}
   dropZone: {fileID: 7183714044091894719, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
@@ -911,6 +912,7 @@ MonoBehaviour:
   Card1Value: 1
   Card2Value: 2
   Card3Value: 3
+  Card4Value: 4
   WinScore: 0
   Score: 0
   cardFlipBool: 0
@@ -1740,6 +1742,7 @@ GameObject:
   - component: {fileID: 2771341378304892737}
   - component: {fileID: 3889839490081900141}
   - component: {fileID: 808381359068620331}
+  - component: {fileID: 9029387648676048120}
   m_Layer: 5
   m_Name: Draw Cards
   m_TagString: Untagged
@@ -1747,6 +1750,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9029387648676048120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9029387648676048119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 808381359068620331}
+          m_TargetAssemblyTypeName: Draw_Cards, Assembly-CSharp
+          m_MethodName: OnClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!222 &9164997777330518889
 CanvasRenderer:
   m_ObjectHideFlags: 0
