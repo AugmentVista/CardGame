@@ -37,11 +37,20 @@ public class PlayerManager : MonoBehaviour
     }
     public void DealCards()
     {
-        if (cardsPlayed <= 10 && cardsDrawn <= 10 && cards.Count > 0)
-        {
-            for (var i = 0; i < 2; i++) // Change to draw 2 cards
+            for (var i = 0; i < 1; i++)
             {
-                int randomIndex = Random.Range(1, cards.Count); // could this be an array
+                Debug.Log("Deck2 card" + Deck2.Count);
+                int randomIndex = Random.Range(0, Deck2.Count - 1); // could this be an array
+                GameObject Enemycard = Instantiate(Deck2[randomIndex], new Vector2(0, 0), Quaternion.identity);
+                DealtCard(Enemycard, "EnemyDealt");
+                cardsDrawn++;
+            }
+        if (cardsPlayed <= 10 && cardsDrawn <= 10)
+        {
+            for (var i = 0; i < 1; i++) 
+            {
+                Debug.Log(cards.Count);
+                int randomIndex = Random.Range(0, cards.Count - 1); // could this be an array. No
                 GameObject card = Instantiate(cards[randomIndex], new Vector2(0, 0), Quaternion.identity);
                 DealtCard(card, "Dealt");
                 cardsDrawn++;
@@ -60,24 +69,29 @@ public class PlayerManager : MonoBehaviour
     }
     void DealtCard(GameObject card, string type)
     {
-        if (type == "Dealt")
+        if (type == "EnemyDealt")
         {
-            {
-                card.transform.SetParent(EnemyArea.transform, false); // puts cards into the enemy card after they have been dealt
-                card.GetComponent<CardFlipper>().Flip(); 
-            }
             /*if it is from the second random index put them in the player area here.
             {
                 card.transform.SetParent(PlayerArea.transform, false);
             }
             else*/
+            {
+                card.transform.SetParent(EnemyArea.transform, false); // puts cards into the enemy card after they have been dealt
+                card.GetComponent<CardFlipper>().Flip(); 
+            }
+        }
+        else if (type == "Dealt")
+        {
+            card.transform.SetParent(PlayerArea.transform, false); // puts cards into the enemy card after they have been dealt
+            card.GetComponent<CardFlipper>().Flip();
         }
         else if (type == "Played")
         {
 
             card.transform.SetParent(dropZone.transform, false);
             cardsPlayed++;
-            
+      
             Debug.Log("Local cards played = " + cardsPlayed);
         }
     }   

@@ -7,7 +7,6 @@ public class dragDrop : MonoBehaviour
     public GameObject Canvas;
     public GameObject DropZone;
     public PlayerManager PlayerManager;
-
     private bool isDragging = false;
     public bool cardInDropZone = false;
     private bool isOverDropZone = false;
