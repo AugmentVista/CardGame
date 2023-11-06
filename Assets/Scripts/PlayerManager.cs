@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using TMPro;
 
 public class PlayerManager : MonoBehaviour
@@ -32,27 +31,32 @@ public class PlayerManager : MonoBehaviour
         cards.Add(Card1);
         cards.Add(Card2);
         cards.Add(Card3);
-        cards.Add(Card4);
+        cards.Add(Card3);
         Deck2.Add(Card4);
     }
     public void DealCards()
     {
-            for (var i = 0; i < 1; i++)
-            {
-                Debug.Log("Deck2 card" + Deck2.Count);
-                int randomIndex = Random.Range(0, Deck2.Count - 1); // could this be an array
-                GameObject Enemycard = Instantiate(Deck2[randomIndex], new Vector2(0, 0), Quaternion.identity);
-                DealtCard(Enemycard, "EnemyDealt");
-                cardsDrawn++;
-            }
         if (cardsPlayed <= 10 && cardsDrawn <= 10)
         {
-            for (var i = 0; i < 1; i++) 
+            for (var i = 0; i < 1; i++) // enemy cards
             {
-                Debug.Log(cards.Count);
-                int randomIndex = Random.Range(0, cards.Count - 1); // could this be an array. No
+                //Debug.Log("Deck2 card" + Deck2.Count);
+                int randomIndex = Random.Range(0, Deck2.Count - 1);
+                GameObject Enemycard = Instantiate(Deck2[randomIndex], new Vector2(0, 0), Quaternion.identity);
+                DealtCard(Enemycard, "EnemyDealt");
+                //Debug.Log("Enemy has drawn a card");
+
+            }
+        }
+        if (cardsPlayed <= 10 && cardsDrawn <= 10) // limits player to drawing and playing 10 cards
+        {
+            for (var i = 0; i < 1; i++) // player cards
+            {
+                //Debug.Log(cards.Count);
+                int randomIndex = Random.Range(0, cards.Count - 1);
                 GameObject card = Instantiate(cards[randomIndex], new Vector2(0, 0), Quaternion.identity);
                 DealtCard(card, "Dealt");
+                //Debug.Log("player has drawn a card"); 
                 cardsDrawn++;
             }
         }
@@ -65,34 +69,25 @@ public class PlayerManager : MonoBehaviour
     public void PlayCard(GameObject card)
     {
         DealtCard(card, "Played");
-    
     }
     void DealtCard(GameObject card, string type)
     {
         if (type == "EnemyDealt")
         {
-            /*if it is from the second random index put them in the player area here.
             {
-                card.transform.SetParent(PlayerArea.transform, false);
-            }
-            else*/
-            {
-                card.transform.SetParent(EnemyArea.transform, false); // puts cards into the enemy card after they have been dealt
-                card.GetComponent<CardFlipper>().Flip(); 
+                card.transform.SetParent(EnemyArea.transform, false);
             }
         }
         else if (type == "Dealt")
         {
-            card.transform.SetParent(PlayerArea.transform, false); // puts cards into the enemy card after they have been dealt
-            card.GetComponent<CardFlipper>().Flip();
+            card.transform.SetParent(PlayerArea.transform, false);
         }
         else if (type == "Played")
         {
 
             card.transform.SetParent(dropZone.transform, false);
             cardsPlayed++;
-      
-            Debug.Log("Local cards played = " + cardsPlayed);
+            //card.GetComponent<CardFlipper>().Flip();
         }
     }   
 }

@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Draw_Cards : MonoBehaviour
 {
-
     public PlayerManager PlayerManager;
 
     public void OnClick()

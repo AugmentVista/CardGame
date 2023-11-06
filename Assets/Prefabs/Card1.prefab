@@ -95,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Canvas: {fileID: 0}
   DropZone: {fileID: 0}
-  PlayerManager: {fileID: 0}
+  PlayerManager: {fileID: 8940147327811738335, guid: 9f005826c7bb2294581414117fd8f414, type: 3}
   cardInDropZone: 0
   IsDraggable: 1
 --- !u!114 &5371461544291617758

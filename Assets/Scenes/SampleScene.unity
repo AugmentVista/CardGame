@@ -637,58 +637,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &569955319
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 569955321}
-  - component: {fileID: 569955320}
-  m_Layer: 0
-  m_Name: NetworkManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &569955320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 569955319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a892319a7b09cee44a92e450a61481a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  winScreen: {fileID: 472866860}
-  Card1: {fileID: 3513485419635015280, guid: 9df5b0210140faf41997229c63e6591d, type: 3}
-  Card2: {fileID: 2512162136882900868, guid: 805727aa65c629142a1ed52019dd602b, type: 3}
-  Card3: {fileID: 5352877499072740421, guid: accd67c24e7aa604f89c67dac039b278, type: 3}
-  Card4: {fileID: 5352877499072740421, guid: a175f50b84077aa4a9d374e85a2dd6ca, type: 3}
-  PlayerArea: {fileID: 3795457205046441309, guid: 9a3f90f7a93983f4ca10e1729becbc5c, type: 3}
-  EnemyArea: {fileID: 3618154097174121613, guid: db788cdaf92de6f409b399f6595090ad, type: 3}
-  dropZone: {fileID: 7183714044091894719, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
---- !u!4 &569955321
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 569955319}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 971.62573, y: 502.01553, z: -8.217144}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1034829700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,7 +1041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec205226820070144858c41b9d44be6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerManager: {fileID: -6143457755359676416, guid: 9f005826c7bb2294581414117fd8f414, type: 3}
+  PlayerManager: {fileID: 1686168856170295002}
 --- !u!224 &927151196608444656
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1193,6 +1141,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1686168856170295002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6368997323058009021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a892319a7b09cee44a92e450a61481a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winScreen: {fileID: 472866860}
+  Card1: {fileID: 3513485419635015280, guid: 9df5b0210140faf41997229c63e6591d, type: 3}
+  Card2: {fileID: 2512162136882900868, guid: 805727aa65c629142a1ed52019dd602b, type: 3}
+  Card3: {fileID: 5352877499072740421, guid: accd67c24e7aa604f89c67dac039b278, type: 3}
+  Card4: {fileID: 5352877499072740421, guid: a175f50b84077aa4a9d374e85a2dd6ca, type: 3}
+  PlayerArea: {fileID: 3795457205046441309, guid: 9a3f90f7a93983f4ca10e1729becbc5c, type: 3}
+  EnemyArea: {fileID: 3618154097174121613, guid: db788cdaf92de6f409b399f6595090ad, type: 3}
+  dropZone: {fileID: 7183714044091894719, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
 --- !u!61 &2258367602272898783
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1442,6 +1410,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!4 &4288898464675119037
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6368997323058009021}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 971.62573, y: 502.01553, z: -8.217144}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!222 &4293196245538647008
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1474,6 +1457,23 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
+--- !u!1 &6368997323058009021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4288898464675119037}
+  - component: {fileID: 1686168856170295002}
+  m_Layer: 0
+  m_Name: PLAYERMANAGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!222 &6541928871215857183
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1742,7 +1742,6 @@ GameObject:
   - component: {fileID: 2771341378304892737}
   - component: {fileID: 3889839490081900141}
   - component: {fileID: 808381359068620331}
-  - component: {fileID: 9029387648676048120}
   m_Layer: 5
   m_Name: Draw Cards
   m_TagString: Untagged
@@ -1750,35 +1749,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &9029387648676048120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9029387648676048119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 808381359068620331}
-          m_TargetAssemblyTypeName: Draw_Cards, Assembly-CSharp
-          m_MethodName: OnClick
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!222 &9164997777330518889
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1794,4 +1764,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1034829703}
   - {fileID: 1602105456}
-  - {fileID: 569955321}
+  - {fileID: 4288898464675119037}

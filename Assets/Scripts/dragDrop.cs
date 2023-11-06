@@ -19,7 +19,8 @@ public class dragDrop : MonoBehaviour
     {
         Canvas = GameObject.Find("Main Canvas");
         DropZone = GameObject.Find("DropZone");
-       
+        PlayerManager = GameObject.Find("PLAYERMANAGER").GetComponent<PlayerManager>();
+
     }
     void Update()
     {
@@ -60,7 +61,6 @@ public class dragDrop : MonoBehaviour
             transform.SetParent(dropZone.transform, false);
             IsDraggable = false;
             cardInDropZone = true;
-            PlayerManager = GetComponent<PlayerManager>();
             PlayerManager.PlayCard(gameObject);
         }
         else 

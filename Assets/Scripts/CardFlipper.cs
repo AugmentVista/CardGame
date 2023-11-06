@@ -1,6 +1,6 @@
-
 using UnityEngine;
 using UnityEngine.UI;
+
 
 public class CardFlipper : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class CardFlipper : MonoBehaviour
     public Sprite CardBack;
     public int timesFlipped = 0;
     public Sprite currentSprite;
-    private bool isFlipped = false;
+    private bool isFlipped = false; // 0
 
     public void Start()
     {
@@ -24,30 +24,54 @@ public class CardFlipper : MonoBehaviour
     }
     void UpdateVisualState()
     {
-        if (isFlipped)
+        if (!isFlipped)
         {
+            Debug.Log("Flipped is false     1 "); // 1
             gameObject.GetComponent<Image>().sprite = CardFront;
         }
-        else
+        else if (isFlipped)
         {
+            Debug.Log("Flipped is true    6 "); // 6
             gameObject.GetComponent<Image>().sprite = CardBack;
+            if (gameObject.GetComponent<Image>().sprite = CardBack)
+            {
+                Debug.Log("WHY THE FUCK AREN'T i CARDBACK");
+            }
+            
         }
     }
     public void Flip()
     {
-        if (timesFlipped <= 2)
+        if (timesFlipped <= 10)
         {
             timesFlipped++;
-            Debug.Log("Times Flipped: " + timesFlipped.ToString());
+                Debug.Log("Times Flipped:" + timesFlipped.ToString() + "   2"); // 2
+                Debug.Log(currentSprite + "    3"); // 3
 
-            if (currentSprite == CardFront)
+
+            if (currentSprite == CardBack)
+            {
+                currentSprite = CardFront;
+                Debug.Log("Cardback == true");
+                gameObject.GetComponent<Image>().sprite = CardFront;
+                isFlipped = false;
+                    Debug.Log("Am i Flipped?" + isFlipped.ToString());
+                    Debug.Log("currentSprite: " + currentSprite.name);
+                UpdateVisualState();
+            }
+
+
+            else if (currentSprite == CardFront)
             {
                 gameObject.GetComponent<Image>().sprite = CardBack;
+                currentSprite = CardBack;
+                isFlipped = true;
+                    Debug.Log(CardFront + "  CardFront == true?");
+                    Debug.Log("Am i Flipped?" + isFlipped.ToString() + "    4"); // 4
+                    Debug.Log("currentSprite:" + currentSprite.name + "     5"); // 5
+                UpdateVisualState();
             }
-            else if (currentSprite == CardBack)
-            {
-                gameObject.GetComponent<Image>().sprite = CardFront;
-            }
+         
         }
         else
         {
@@ -57,11 +81,10 @@ public class CardFlipper : MonoBehaviour
 
     public void FlipCard()
     {
-        Debug.Log("DragDrop: " + DragDrop);
-        Debug.Log("ScoreText: " + ScoreText);
-        Debug.Log("gameObject: " + gameObject);
-        // Check if the card is in the DropZone, so it can be flipped
-        if (timesFlipped <= 2 && DragDrop.cardInDropZone)
+        //Debug.Log("DragDrop: " + DragDrop);
+        //Debug.Log("ScoreText: " + ScoreText);
+        //Debug.Log("gameObject: " + gameObject);
+        if (timesFlipped <= 10 && DragDrop.cardInDropZone)
         {
             Flip();
             ScoreText.OnFlip(this);
