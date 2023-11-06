@@ -33,11 +33,6 @@ public class CardFlipper : MonoBehaviour
         {
             Debug.Log("Flipped is true    6 "); // 6
             gameObject.GetComponent<Image>().sprite = CardBack;
-            if (gameObject.GetComponent<Image>().sprite = CardBack)
-            {
-                Debug.Log("WHY THE FUCK AREN'T i CARDBACK");
-            }
-            
         }
     }
     public void Flip()
