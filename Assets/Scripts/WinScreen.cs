@@ -9,6 +9,7 @@ public class WinScreen : MonoBehaviour
     public GameObject WinText;
     public ScoreText ScoreText;
     public int randomWinScore;
+    public PlayerManager PlayerManager;
     public TextMeshProUGUI rulesText;
     public TextMeshProUGUI winText;
 
@@ -24,13 +25,15 @@ public class WinScreen : MonoBehaviour
     }
     public void Win()
     {
+        Debug.Log("CardsDrawn = " + PlayerManager.cardsDrawn);
         if (ScoreText.WinScore == randomWinScore)
         {
             WinText.SetActive(true);
         }
         else if (ScoreText.WinScore != randomWinScore && PlayerManager.cardsDrawn > 10)
         {
-            Debug.Log("Lose Text is working");
+                Debug.Log("CardsDrawn = " + PlayerManager.cardsDrawn);
+                Debug.Log("Lose Text is working");
             WinText.SetActive(true);
             winText.text = "You Lose";
         }

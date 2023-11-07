@@ -10,6 +10,7 @@ public class Draw_Cards : MonoBehaviour
 
     public void OnClick()
     {
+        Debug.Log("fsdjfjsds");
         PlayerManager.DealCards();
     }
 }

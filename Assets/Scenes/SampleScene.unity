@@ -407,7 +407,9 @@ MonoBehaviour:
   WinText: {fileID: 472866856}
   ScoreText: {fileID: 1277062807}
   randomWinScore: 0
+  PlayerManager: {fileID: 1686168856170295002}
   rulesText: {fileID: 66016613}
+  winText: {fileID: 0}
 --- !u!1 &502311122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,8 +1028,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000097412725, y: 1.4599732}
-  m_SizeDelta: {x: 1920, y: 392}
+  m_AnchoredPosition: {x: 0.00067139, y: 0.50002}
+  m_SizeDelta: {x: 1920, y: 391}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &808381359068620331
 MonoBehaviour:
@@ -1161,6 +1163,7 @@ MonoBehaviour:
   PlayerArea: {fileID: 3795457205046441309, guid: 9a3f90f7a93983f4ca10e1729becbc5c, type: 3}
   EnemyArea: {fileID: 3618154097174121613, guid: db788cdaf92de6f409b399f6595090ad, type: 3}
   dropZone: {fileID: 7183714044091894719, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
+  cardsDrawn: 0
 --- !u!61 &2258367602272898783
 BoxCollider2D:
   m_ObjectHideFlags: 0

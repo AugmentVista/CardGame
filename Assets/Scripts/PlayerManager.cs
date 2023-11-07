@@ -17,7 +17,7 @@ public class PlayerManager : MonoBehaviour
     List<GameObject> cards = new List<GameObject>();
     List<GameObject> Deck2 = new List<GameObject>();
     int cardsPlayed = 0;
-    public static int cardsDrawn = 0;
+    public int cardsDrawn = 0;
 
     private void Start()
     {
@@ -39,7 +39,8 @@ public class PlayerManager : MonoBehaviour
     }
     public void DealCards()
     {
-        if (cardsPlayed <= 15 && cardsDrawn <= 15)
+        Debug.Log("dfjsjdfsjdfjsjdfbjsdjjbsdjfsjfj");
+        if (cardsPlayed <= 15 && cardsDrawn <= 15) 
         {
             for (var i = 0; i < 2; i++) // enemy cards
             {
