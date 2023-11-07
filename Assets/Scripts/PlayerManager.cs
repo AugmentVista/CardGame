@@ -17,7 +17,7 @@ public class PlayerManager : MonoBehaviour
     List<GameObject> cards = new List<GameObject>();
     List<GameObject> Deck2 = new List<GameObject>();
     int cardsPlayed = 0;
-    int cardsDrawn = 0;
+    public static int cardsDrawn = 0;
 
     private void Start()
     {
@@ -30,30 +30,33 @@ public class PlayerManager : MonoBehaviour
 
         cards.Add(Card1);
         cards.Add(Card2);
-        cards.Add(Card3);
-        cards.Add(Card3);
+        cards.Add(Card3); 
+        cards.Add(Card4);
+        Deck2.Add(Card1);
+        Deck2.Add(Card2); 
+        Deck2.Add(Card3);
         Deck2.Add(Card4);
     }
     public void DealCards()
     {
-        if (cardsPlayed <= 10 && cardsDrawn <= 10)
+        if (cardsPlayed <= 15 && cardsDrawn <= 15)
         {
-            for (var i = 0; i < 1; i++) // enemy cards
+            for (var i = 0; i < 2; i++) // enemy cards
             {
                 //Debug.Log("Deck2 card" + Deck2.Count);
-                int randomIndex = Random.Range(0, Deck2.Count - 1);
+                int randomIndex = Random.Range(0, Deck2.Count); 
                 GameObject Enemycard = Instantiate(Deck2[randomIndex], new Vector2(0, 0), Quaternion.identity);
                 DealtCard(Enemycard, "EnemyDealt");
                 //Debug.Log("Enemy has drawn a card");
 
             }
         }
-        if (cardsPlayed <= 10 && cardsDrawn <= 10) // limits player to drawing and playing 10 cards
+        if (cardsPlayed <= 15 && cardsDrawn <= 15) // limits player to drawing and playing 10 cards
         {
-            for (var i = 0; i < 1; i++) // player cards
+            for (var i = 0; i < 2; i++) // player cards
             {
                 //Debug.Log(cards.Count);
-                int randomIndex = Random.Range(0, cards.Count - 1);
+                int randomIndex = Random.Range(0, cards.Count);
                 GameObject card = Instantiate(cards[randomIndex], new Vector2(0, 0), Quaternion.identity);
                 DealtCard(card, "Dealt");
                 //Debug.Log("player has drawn a card"); 
