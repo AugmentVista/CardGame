@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     List<GameObject> Deck2 = new List<GameObject>();
     int cardsPlayed = 0;
     public int cardsDrawn = 0;
+    public bool IsEnemyCard = false;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class PlayerManager : MonoBehaviour
         EnemyArea = GameObject.Find("EnemyArea");
         dropZone = GameObject.Find("DropZone");
         scoreText = FindObjectOfType<ScoreText>();
+        
         scoreText.CountText.enabled = true;
         scoreText.rulesText.enabled = true;
 
@@ -77,10 +79,9 @@ public class PlayerManager : MonoBehaviour
     void DealtCard(GameObject card, string type)
     {
         if (type == "EnemyDealt")
-        {
-            {
-                card.transform.SetParent(EnemyArea.transform, false);
-            }
+        { 
+            card.transform.SetParent(EnemyArea.transform, false);
+            IsEnemyCard = true;
         }
         else if (type == "Dealt")
         {
@@ -88,10 +89,8 @@ public class PlayerManager : MonoBehaviour
         }
         else if (type == "Played")
         {
-
             card.transform.SetParent(dropZone.transform, false);
             cardsPlayed++;
-            //card.GetComponent<CardFlipper>().Flip();
         }
     }   
 }

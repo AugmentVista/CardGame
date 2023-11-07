@@ -8,6 +8,7 @@ public class ScoreText : MonoBehaviour
 {
     public GameObject DropZone;
     public TextMeshProUGUI CountText;
+    public PlayerManager PlayerManager;
     public TextMeshProUGUI rulesText;
     public WinScreen winScreen;
     private int Card1inPlay; 
@@ -26,10 +27,13 @@ public class ScoreText : MonoBehaviour
     {
         rulesText.enabled = false;
         CountText.enabled = false;
+        
     }
-
-    public void OnFlip(CardFlipper cardFlipper)
+    // CHANGE TARGET SCORES TO HP, POSTIVE CARDS DAMAGE YOUR OPPONENT NEGATIVE CARDS HEAL YOU.
+    public void OnFlip(CardFlipper cardFlipper, PlayerManager playerManager)
     {
+        PlayerManager = playerManager;
+
         if (cardFlipper.timesFlipped <= 10)
         { 
             cardFlipBool = true;
@@ -44,25 +48,37 @@ public class ScoreText : MonoBehaviour
         if (childGameObject.name.StartsWith("Card1") && cardFlipper.currentSprite == cardFlipper.CardBack && cardFlipBool)
         {
             Card1inPlay++;
-            Score += Card1Value; // The card flips once when it is played so the second flip on the board turns off the card flip bool and prevents score from being added multiple times from one card.
+            if (PlayerManager.IsEnemyCard)
+            { 
+            Score += Card1Value;
+            }
             CountText.text = "Current Score " + Score.ToString();
         }
         if (childGameObject.name.StartsWith("Card2") && cardFlipper.currentSprite == cardFlipper.CardBack && cardFlipBool)
         { 
             Card2inPlay++;
-            Score += Card2Value;
+            if (PlayerManager.IsEnemyCard)
+            {
+                Score += Card2Value;
+            }
             CountText.text = "Current Score " + Score.ToString();
         }
         if (childGameObject.name.StartsWith("Card3") && cardFlipper.currentSprite == cardFlipper.CardBack && cardFlipBool)
         {
             Card3inPlay++;
-            Score += Card3Value;
+            if (PlayerManager.IsEnemyCard)
+            {
+                Score += Card3Value;
+            }
             CountText.text = "Current Score " + Score.ToString();
         }
         if (childGameObject.name.StartsWith("Card4") && cardFlipper.currentSprite == cardFlipper.CardBack && cardFlipBool)
         {
             Card4inPlay++;
-            Score += Card4Value;
+            if (PlayerManager.IsEnemyCard)
+            {
+                Score += Card4Value;
+            }
             CountText.text = "Current Score " + Score.ToString();
         }
         UpdateUI();

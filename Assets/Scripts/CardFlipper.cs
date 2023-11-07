@@ -20,6 +20,7 @@ public class CardFlipper : MonoBehaviour
         DropZone = GameObject.Find("DropZone");
         ScoreText = GameObject.Find("CountText").GetComponent<ScoreText>();
         DragDrop = GetComponent<dragDrop>();
+        PlayerManager = FindObjectOfType<PlayerManager>();
         UpdateVisualState();
     }
     void UpdateVisualState()
@@ -82,7 +83,7 @@ public class CardFlipper : MonoBehaviour
         if (timesFlipped <= 10 && DragDrop.cardInDropZone)
         {
             Flip();
-            ScoreText.OnFlip(this);
+            ScoreText.OnFlip(this, PlayerManager);
             
         }
     }

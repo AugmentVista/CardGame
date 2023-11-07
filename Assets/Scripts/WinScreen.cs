@@ -32,8 +32,6 @@ public class WinScreen : MonoBehaviour
         }
         else if (ScoreText.WinScore != randomWinScore && PlayerManager.cardsDrawn > 10)
         {
-                Debug.Log("CardsDrawn = " + PlayerManager.cardsDrawn);
-                Debug.Log("Lose Text is working");
             WinText.SetActive(true);
             winText.text = "You Lose";
         }
