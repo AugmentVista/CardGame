@@ -1169,7 +1169,7 @@ MonoBehaviour:
   Card1Value: 1
   Card2Value: 2
   Card3Value: 3
-  Card4Value: 4
+  Card4Value: -4
   WinScore: 0
   Score: 0
   cardFlipBool: 0
