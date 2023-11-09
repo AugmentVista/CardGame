@@ -77,9 +77,6 @@ public class CardFlipper : MonoBehaviour
 
     public void FlipCard()
     {
-        //Debug.Log("DragDrop: " + DragDrop);
-        //Debug.Log("ScoreText: " + ScoreText);
-        //Debug.Log("gameObject: " + gameObject);
         if (timesFlipped <= 10 && DragDrop.cardInDropZone)
         {
             Flip();

@@ -41,13 +41,12 @@ public class PlayerManager : MonoBehaviour
     }
     public void DealCards()
     {
-        Debug.Log("dfjsjdfsjdfjsjdfbjsdjjbsdjfsjfj");
         if (cardsPlayed <= 15 && cardsDrawn <= 15) 
         {
             for (var i = 0; i < 2; i++) // enemy cards
             {
                 //Debug.Log("Deck2 card" + Deck2.Count);
-                int randomIndex = Random.Range(0, Deck2.Count); 
+                int randomIndex = Random.Range(0, Deck2.Count);
                 GameObject Enemycard = Instantiate(Deck2[randomIndex], new Vector2(0, 0), Quaternion.identity);
                 DealtCard(Enemycard, "EnemyDealt");
                 //Debug.Log("Enemy has drawn a card");
@@ -76,7 +75,7 @@ public class PlayerManager : MonoBehaviour
     {
         DealtCard(card, "Played");
     }
-    void DealtCard(GameObject card, string type)
+    public void DealtCard(GameObject card, string type)
     {
         if (type == "EnemyDealt")
         { 

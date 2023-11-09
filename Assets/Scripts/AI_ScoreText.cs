@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class ScoreText : MonoBehaviour
+public class AI_ScoreText : MonoBehaviour
 {
     public TextMeshProUGUI CountText;
     public PlayerManager PlayerManager;
@@ -19,7 +19,7 @@ public class ScoreText : MonoBehaviour
     public int Card3Value = 3;
     public int Card4Value = -4;
     public int WinScore;
-    public int Score;
+    public int EnemyScore;
     public bool cardFlipBool;
 
     private void Start()
@@ -28,7 +28,7 @@ public class ScoreText : MonoBehaviour
         CountText.enabled = false;
         
     }
-    // CHANGE TARGET SCORES TO HP, POSTIVE CARDS DAMAGE YOUR OPPONENT NEGATIVE CARDS HEAL YOU.
+    // CHANGE Target-Score TO HP, POSTIVE CARDS DAMAGE YOUR OPPONENT NEGATIVE CARDS HEAL YOU.
     public void OnFlip(CardFlipper cardFlipper, PlayerManager playerManager)
     {
         Debug.Log(Card4Value);
@@ -50,42 +50,42 @@ public class ScoreText : MonoBehaviour
             Card1inPlay++;
             if (PlayerManager.IsEnemyCard)
             { 
-            Score += Card1Value;
+            EnemyScore += Card1Value;
             }
-            CountText.text = "Current Score " + Score.ToString();
+            CountText.text = "Current EnemyScore " + EnemyScore.ToString();
         }
         if (childGameObject.name.StartsWith("Card2") && cardFlipper.currentSprite == cardFlipper.CardBack && cardFlipBool)
         { 
             Card2inPlay++;
             if (PlayerManager.IsEnemyCard)
             {
-                Score += Card2Value;
+                EnemyScore += Card2Value;
             }
-            CountText.text = "Current Score " + Score.ToString();
+            CountText.text = "Current EnemyScore " + EnemyScore.ToString();
         }
         if (childGameObject.name.StartsWith("Card3") && cardFlipper.currentSprite == cardFlipper.CardBack && cardFlipBool)
         {
             Card3inPlay++;
             if (PlayerManager.IsEnemyCard)
             {
-                Score += Card3Value;
+                EnemyScore += Card3Value;
             }
-            CountText.text = "Current Score " + Score.ToString();
+            CountText.text = "Current EnemyScore " + EnemyScore.ToString();
         }
         if (childGameObject.name.StartsWith("Card4") && cardFlipper.currentSprite == cardFlipper.CardBack && cardFlipBool)
         {
             Card4inPlay++;
             if (PlayerManager.IsEnemyCard)
             {
-                Score += Card4Value;
+                EnemyScore += Card4Value;
             }
-            CountText.text = "Current Score " + Score.ToString();
+            CountText.text = "Current EnemyScore " + EnemyScore.ToString();
         }
         UpdateUI();
     }
     public void UpdateUI()
     {
-        WinScore = Score;
+        WinScore = EnemyScore;
         winScreen.Win();
     }
 }

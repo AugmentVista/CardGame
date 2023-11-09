@@ -12,6 +12,7 @@ public class WinScreen : MonoBehaviour
     public PlayerManager PlayerManager;
     public TextMeshProUGUI rulesText;
     public TextMeshProUGUI winText;
+    public TextMeshProUGUI AI_rulesText;
 
     void Start()
     {
@@ -22,6 +23,10 @@ public class WinScreen : MonoBehaviour
 
         randomWinScore = Random.Range(12, 20);
         rulesText.text = "Exact score of " + randomWinScore.ToString() + " to Win ";
+
+        AI_rulesText.text = "Exact score of " + randomWinScore.ToString() + " to Win ";
+
+
     }
     public void Win()
     {

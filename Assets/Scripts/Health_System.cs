@@ -9,9 +9,13 @@ public class Health_System : MonoBehaviour
     public TextMeshProUGUI HealthText;
     public TextMeshProUGUI EnemyHealthText;
     public ScoreText ScoreText;
+    public AI_ScoreText AIscoreText;
+
 
     int basePlayerHealth = 10;
     int currentPlayerHealth; 
+    int baseEnemyHealth = 10;
+    int currentEnemyHealth; 
 
 
     private void Start()
@@ -23,8 +27,11 @@ public class Health_System : MonoBehaviour
     }
     void Update()
     {
+
         currentPlayerHealth = basePlayerHealth - ScoreText.Score;
         HealthText.text = "Health " + currentPlayerHealth.ToString();
+        currentEnemyHealth = baseEnemyHealth - ScoreText.Score;
+        EnemyHealthText.text = "Health " + currentEnemyHealth.ToString();
     }
 
 
