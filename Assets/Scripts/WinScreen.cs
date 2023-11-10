@@ -37,7 +37,7 @@ public class WinScreen : MonoBehaviour
         {
             WinText.enabled = true;
         }
-        else if (ScoreText.WinScore != randomWinScore && PlayerManager.cardsDrawn > 10)
+        else if (ScoreText.WinScore != randomWinScore && (PlayerManager.cardsDrawn > 10 || ScoreText.AIscore == AIrandomWinScore))
         {
             WinText.enabled = true;
             winText.text = "You Lose";

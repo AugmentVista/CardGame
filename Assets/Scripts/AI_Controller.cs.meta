@@ -3,7 +3,18 @@ guid: 80298e701edf0a74d96aa7c54f99cf4c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - playerManager: {instanceID: 0}
+  - winScreen: {instanceID: 0}
+  - AI_CountText: {instanceID: 0}
+  - scoreText: {instanceID: 0}
+  - PlayerArea: {instanceID: 0}
+  - EnemyArea: {instanceID: 0}
+  - dropZone: {instanceID: 0}
+  - Card1: {fileID: 3513485419635015280, guid: 9df5b0210140faf41997229c63e6591d, type: 3}
+  - Card2: {fileID: 2512162136882900868, guid: 805727aa65c629142a1ed52019dd602b, type: 3}
+  - Card3: {fileID: 5352877499072740421, guid: accd67c24e7aa604f89c67dac039b278, type: 3}
+  - Card4: {fileID: 5352877499072740421, guid: a175f50b84077aa4a9d374e85a2dd6ca, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

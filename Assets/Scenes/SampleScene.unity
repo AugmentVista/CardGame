@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -731.80493, y: 171.33083}
+  m_AnchoredPosition: {x: -731.805, y: 171.33083}
   m_SizeDelta: {x: 548.54, y: 195.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &66016613
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5b7e2e54b143742bc2b0e8c67f0a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WinText: {fileID: 472866856}
+  WinText: {fileID: 472866858}
   ScoreText: {fileID: 1277062807}
   randomWinScore: 0
   AIrandomWinScore: 0
@@ -928,6 +928,61 @@ MonoBehaviour:
   ScoreText: {fileID: 1277062807}
   HealthText: {fileID: 691249929}
   EnemyHealthText: {fileID: 1262387687}
+--- !u!1 &789530692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 789530694}
+  - component: {fileID: 789530693}
+  m_Layer: 0
+  m_Name: AI script holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &789530693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789530692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80298e701edf0a74d96aa7c54f99cf4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerManager: {fileID: 1686168856170295002}
+  winScreen: {fileID: 472866860}
+  AI_CountText: {fileID: 1985629608}
+  scoreText: {fileID: 1277062807}
+  Card1: {fileID: 3513485419635015280, guid: 9df5b0210140faf41997229c63e6591d, type: 3}
+  Card2: {fileID: 2512162136882900868, guid: 805727aa65c629142a1ed52019dd602b, type: 3}
+  Card3: {fileID: 5352877499072740421, guid: accd67c24e7aa604f89c67dac039b278, type: 3}
+  Card4: {fileID: 5352877499072740421, guid: a175f50b84077aa4a9d374e85a2dd6ca, type: 3}
+  PlayerArea: {fileID: 3795457205046441309, guid: 9a3f90f7a93983f4ca10e1729becbc5c, type: 3}
+  EnemyArea: {fileID: 3618154097174121613, guid: db788cdaf92de6f409b399f6595090ad, type: 3}
+  dropZone: {fileID: 7183714044091894719, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
+--- !u!4 &789530694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789530692}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1013.5547, y: 571.7587, z: 0.5305176}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1015608332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,7 +1253,6 @@ GameObject:
   - component: {fileID: 1277062803}
   - component: {fileID: 1277062806}
   - component: {fileID: 1277062805}
-  - component: {fileID: 1277062808}
   - component: {fileID: 1277062807}
   m_Layer: 5
   m_Name: CountText
@@ -1336,6 +1390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CountText: {fileID: 1277062805}
+  AICountText: {fileID: 1985629608}
   PlayerManager: {fileID: 1686168856170295002}
   rulesText: {fileID: 66016613}
   winScreen: {fileID: 472866860}
@@ -1347,35 +1402,6 @@ MonoBehaviour:
   Score: 0
   AIscore: 0
   cardFlipBool: 0
---- !u!114 &1277062808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277062802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 9
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1277062807}
-          m_TargetAssemblyTypeName: ScoreText, Assembly-CSharp
-          m_MethodName: OnFlip
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: CardFlipper, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1602105452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,62 +1509,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1895815692
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1895815694}
-  - component: {fileID: 1895815693}
-  m_Layer: 0
-  m_Name: AI_Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1895815693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895815692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80298e701edf0a74d96aa7c54f99cf4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerManager: {fileID: 1686168856170295002}
-  winScreen: {fileID: 472866860}
-  AI_CountText: {fileID: 1985629608}
-  scoreText: {fileID: 1277062807}
-  PlayerArea: {fileID: 3795457205046441309, guid: 9a3f90f7a93983f4ca10e1729becbc5c, type: 3}
-  EnemyArea: {fileID: 3618154097174121613, guid: db788cdaf92de6f409b399f6595090ad, type: 3}
-  dropZone: {fileID: 7183714044091894719, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
-  Card1: {fileID: 3513485419635015280, guid: 9df5b0210140faf41997229c63e6591d, type: 3}
-  Card2: {fileID: 2512162136882900868, guid: 805727aa65c629142a1ed52019dd602b, type: 3}
-  Card3: {fileID: 5352877499072740421, guid: accd67c24e7aa604f89c67dac039b278, type: 3}
-  Card4: {fileID: 5352877499072740421, guid: a175f50b84077aa4a9d374e85a2dd6ca, type: 3}
-  targetScore: 20
---- !u!4 &1895815694
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1895815692}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 970.90753, y: 626.70856, z: 4.0924144}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1985629604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,7 +1520,6 @@ GameObject:
   - component: {fileID: 1985629605}
   - component: {fileID: 1985629609}
   - component: {fileID: 1985629608}
-  - component: {fileID: 1985629607}
   - component: {fileID: 1985629610}
   m_Layer: 5
   m_Name: 'AI_CountText '
@@ -1578,35 +1547,6 @@ RectTransform:
   m_AnchoredPosition: {x: 699, y: -194}
   m_SizeDelta: {x: 426.82, y: 150.19}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1985629607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1985629604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 9
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: ScoreText, Assembly-CSharp
-          m_MethodName: OnFlip
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: CardFlipper, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &1985629608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1717,6 +1657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CountText: {fileID: 1985629608}
+  AICountText: {fileID: 1985629608}
   PlayerManager: {fileID: 1686168856170295002}
   rulesText: {fileID: 485939183}
   winScreen: {fileID: 472866860}
@@ -1769,6 +1710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerManager: {fileID: 1686168856170295002}
   winScreen: {fileID: 472866860}
+  ScoreText: {fileID: 1277062807}
 --- !u!224 &927151196608444656
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1881,6 +1823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winScreen: {fileID: 472866860}
+  AIcontroller: {fileID: 789530693}
   Card1: {fileID: 3513485419635015280, guid: 9df5b0210140faf41997229c63e6591d, type: 3}
   Card2: {fileID: 2512162136882900868, guid: 805727aa65c629142a1ed52019dd602b, type: 3}
   Card3: {fileID: 5352877499072740421, guid: accd67c24e7aa604f89c67dac039b278, type: 3}
@@ -1889,7 +1832,6 @@ MonoBehaviour:
   EnemyArea: {fileID: 3618154097174121613, guid: db788cdaf92de6f409b399f6595090ad, type: 3}
   dropZone: {fileID: 7183714044091894719, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
   cardsDrawn: 0
-  IsEnemyCard: 0
 --- !u!61 &2258367602272898783
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2494,4 +2436,4 @@ SceneRoots:
   - {fileID: 1034829703}
   - {fileID: 1602105456}
   - {fileID: 4288898464675119037}
-  - {fileID: 1895815694}
+  - {fileID: 789530694}

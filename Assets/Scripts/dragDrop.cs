@@ -20,7 +20,23 @@ public class dragDrop : MonoBehaviour
         Canvas = GameObject.Find("Main Canvas");
         DropZone = GameObject.Find("DropZone");
         PlayerManager = GameObject.Find("PLAYERMANAGER").GetComponent<PlayerManager>();
+        if (Canvas == null)
+        {
+            Debug.LogError("Canvas not found in dragDrop.");
+            return;
+        }
 
+        if (DropZone == null)
+        {
+            Debug.LogError("DropZone not found in dragDrop.");
+            return;
+        }
+
+        if (PlayerManager == null)
+        {
+            Debug.LogError("PlayerManager not found in dragDrop.");
+            return;
+        }
     }
     void Update()
     {

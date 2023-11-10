@@ -37,17 +37,20 @@ public class ScoreText : MonoBehaviour
         UpdateUI();
     }
 
-    void UpdateScore(GameObject childGameObject, CardFlipper cardFlipper)
+    public void UpdateScore(GameObject childGameObject, CardFlipper cardFlipper)
     {
-        if (childGameObject.name.StartsWith("Card") && cardFlipper.currentSprite == cardFlipper.CardBack && cardFlipBool)
+        Debug.Log(childGameObject + " sdtgsrhrdhdsth");
+        if (childGameObject.name.StartsWith("Card") && (cardFlipper.currentSprite == cardFlipper.CardBack || cardFlipper.isEnemyCard) && cardFlipBool)
         {
             if (cardFlipper.isEnemyCard)
             {
                 AIscore += cardFlipper.valueOfCard;
+                AICountText.text = "Current Score " + AIscore.ToString();
             }
             if (cardFlipper.isEnemyCard == false)
             { 
                 Score += cardFlipper.valueOfCard;
+                CountText.text = "Current Score " + Score.ToString();
             }
         }
     }

@@ -9,11 +9,12 @@ public class Draw_Cards : MonoBehaviour
 {
     public PlayerManager PlayerManager;
     public WinScreen winScreen;
+
+    [SerializeField]
     public ScoreText ScoreText;
 
     public void OnClick()
     {
-        Debug.Log("fsdjfjsds");
         PlayerManager.DealCards();
         ScoreText.WinScore = ScoreText.Score;
         winScreen.Win();

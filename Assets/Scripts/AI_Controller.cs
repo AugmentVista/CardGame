@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using System.Collections;
+using UnityEditor;
 
 public class AI_Controller : MonoBehaviour
 {
@@ -8,37 +10,78 @@ public class AI_Controller : MonoBehaviour
     public WinScreen winScreen;
     public TextMeshProUGUI AI_CountText;
     public ScoreText scoreText;
-    public GameObject PlayerArea;
-    public GameObject EnemyArea;
-    public GameObject dropZone;
     public GameObject Card1;
     public GameObject Card2;
     public GameObject Card3;
-    public GameObject Card4;
+    public GameObject Card4; // make negative cards dumbass
+    public GameObject PlayerArea;
+    public GameObject EnemyArea;
+    public GameObject dropZone;
 
-
-     // Set the AI's target score
+    // Set the AI's target score
     List<GameObject> AIcards = new List<GameObject>();
     List<GameObject> AIhand = new List<GameObject>();
+    List<GameObject> AICardsInPlay = new List<GameObject>();
 
     void Start()
     {
-        playerManager = FindObjectOfType<PlayerManager>();
-        winScreen = FindObjectOfType<WinScreen>();
-        scoreText = FindObjectOfType<ScoreText>();
+        InitializeReferences();
+       
 
         dropZone = GameObject.Find("DropZone");
         PlayerArea = GameObject.Find("PlayerArea");
         EnemyArea = GameObject.Find("EnemyArea");
-        dropZone = GameObject.Find("DropZone");
-        AI_CountText.enabled = false;
-        int targetScore = winScreen.AIrandomWinScore;
-
 
         AIcards.Add(Card1);
         AIcards.Add(Card2);
         AIcards.Add(Card3);
         AIcards.Add(Card4);
+    }
+    private void InitializeReferences()
+    {
+        scoreText = FindObjectOfType<ScoreText>();
+        if (scoreText == null)
+        {
+            Debug.LogError("ScoreText not found in AI_Controller.");
+            return;
+        }
+        if (scoreText == null)
+        {
+            Debug.LogError("ScoreText not found in AI_Controller.");
+            return;
+        }
+        playerManager = FindObjectOfType<PlayerManager>();
+        if (playerManager == null)
+        {
+            Debug.LogError("PlayerManager not found in AI_Controller.");
+            return;
+        }
+
+        winScreen = FindObjectOfType<WinScreen>();
+        if (winScreen == null)
+        {
+            Debug.LogError("WinScreen not found in AI_Controller.");
+            return;
+        }
+        dropZone = GameObject.Find("DropZone");
+        if (dropZone == null)
+        {
+            Debug.LogError("DropZone not found in AI_Controller.");
+            return;
+        }
+
+        PlayerArea = GameObject.Find("PlayerArea");
+        if (PlayerArea == null)
+        {
+            Debug.LogError("PlayerArea not found in AI_Controller.");
+            return;
+        }
+
+        EnemyArea = GameObject.Find("EnemyArea");
+        if (EnemyArea == null)
+        {
+            Debug.LogError("EnemyArea not found in AI_Controller.");
+        }
     }
 
 
@@ -46,40 +89,35 @@ public class AI_Controller : MonoBehaviour
     {
         for (var i = 0; i < 2; i++)
         {
-            //Debug.Log("AIcards card" + AIcards.Count);
             int randomIndex = Random.Range(0, AIcards.Count);
-            GameObject Enemycard = Instantiate(AIcards[randomIndex], new Vector2(0, 0), Quaternion.identity);
+            GameObject Enemycard = Instantiate(AIcards[randomIndex], EnemyArea.transform);
             playerManager.DealtCard(Enemycard, "EnemyDealt");
             AIhand.Add(Enemycard);
-            //Debug.Log("Enemy has drawn a card");
         }
     }
 
     public void PlayAITurn()
     {
         GameObject selectedCard = SelectCardToPlay();
-        playerManager.PlayCard(selectedCard, "Played");
+        AICardsInPlay.Add(selectedCard);
+        AIhand.Remove(selectedCard);
 
+        // Ensure the selected card is an instance of a prefab
 
+        if (selectedCard != null)
+        {
+            // Get the current parent (EnemyArea)
+            Transform currentParent = selectedCard.transform.parent;
 
+            // Change the parent to DropZone
+            selectedCard.transform.SetParent(dropZone.transform, false);
 
-        //selectedCard = // Logic telling the AI to play the highest value card in its hand --
-
-        //else if it's health is greater than 0, it plays whichever is the negative most card --
-
-        //else it plays the highest value card against the players health.
-
-
-        // Call the PlayCard method in PlayerManager to play the selected card
-        //playerManager.PlayCard(selectedCard);
-
-        // Optional logic to check if the AI wins or loses here. otherwise it plays until the --
-        //player wins or loses
+            scoreText.UpdateScore(selectedCard, selectedCard.GetComponent<CardFlipper>());
+            winScreen.Win();
+        }
     }
 
-
-
-    int CardValueCheck(int i)
+    int CardValueCheck(int i) // for some reason this tells me -4 > 3 <3
     {
         switch (i)
         {
@@ -95,19 +133,19 @@ public class AI_Controller : MonoBehaviour
                 return 0;
         }
     }
+
     GameObject SelectCardToPlay()
     {
         int highestValue = int.MinValue;
         GameObject highestValueCard = null;
-
-        for (int i = 0; i < AIcards.Count; i++)
+        for (int i = 0; i < AIhand.Count; i++)
         {
-            int currentCardValue = CardValueCheck(i);
+            int currentCardValue = AIhand[i].GetComponent<CardFlipper>().valueOfCard;
 
             if (currentCardValue > highestValue)
             {
                 highestValue = currentCardValue;
-                highestValueCard = AIcards[i].gameObject;
+                highestValueCard = AIhand[i];
             }
         }
         return highestValueCard;

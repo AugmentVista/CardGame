@@ -10,9 +10,10 @@ public class CardFlipper : MonoBehaviour
     public GameObject DropZone;
     public Sprite CardFront;
     public Sprite CardBack;
+    public AI_Controller AIController;
     public int timesFlipped = 0;
     public Sprite currentSprite;
-    private bool isFlipped = false; // 0
+    private bool isFlipped = false; 
 
     public bool isEnemyCard = false;
     public int valueOfCard;
@@ -24,18 +25,28 @@ public class CardFlipper : MonoBehaviour
         ScoreText = GameObject.Find("CountText").GetComponent<ScoreText>();
         DragDrop = GetComponent<dragDrop>();
         PlayerManager = FindObjectOfType<PlayerManager>();
+        AIController = FindObjectOfType<AI_Controller>();
+
+        if (AIController == null)
+        {
+            Debug.LogError("AI_Controller component not found on the CardFlipper GameObject.");
+        }
+        else
+        {
+            Debug.Log("AI_Controller component found on the CardFlipper GameObject.");
+        }
+
         UpdateVisualState();
     }
+
     void UpdateVisualState()
     {
         if (!isFlipped)
         {
-            Debug.Log("Flipped is false     1 "); // 1
             gameObject.GetComponent<Image>().sprite = CardFront;
         }
         else if (isFlipped)
         {
-            Debug.Log("Flipped is true    6 "); // 6
             gameObject.GetComponent<Image>().sprite = CardBack;
         }
     }
@@ -43,11 +54,7 @@ public class CardFlipper : MonoBehaviour
     {
         if (timesFlipped <= 10)
         {
-            timesFlipped++;
-                Debug.Log("Times Flipped:" + timesFlipped.ToString() + "   2"); // 2
-                Debug.Log(currentSprite + "    3"); // 3
-
-
+                timesFlipped++;
             if (currentSprite == CardBack)
             {
                 currentSprite = CardFront;
@@ -58,19 +65,13 @@ public class CardFlipper : MonoBehaviour
                     Debug.Log("currentSprite: " + currentSprite.name);
                 UpdateVisualState();
             }
-
-
             else if (currentSprite == CardFront)
             {
                 gameObject.GetComponent<Image>().sprite = CardBack;
                 currentSprite = CardBack;
                 isFlipped = true;
-                    Debug.Log(CardFront + "  CardFront == true?");
-                    Debug.Log("Am i Flipped?" + isFlipped.ToString() + "    4"); // 4
-                    Debug.Log("currentSprite:" + currentSprite.name + "     5"); // 5
                 UpdateVisualState();
             }
-         
         }
         else
         {
@@ -84,7 +85,7 @@ public class CardFlipper : MonoBehaviour
         {
             Flip();
             ScoreText.OnFlip(this, PlayerManager);
-            
+            AIController.PlayAITurn();
         }
     }
 }

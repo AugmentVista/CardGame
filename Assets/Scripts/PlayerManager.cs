@@ -6,6 +6,9 @@ using TMPro;
 public class PlayerManager : MonoBehaviour
 {
     public WinScreen winScreen;
+    [SerializeField]
+    public AI_Controller AIcontroller;
+
     public GameObject Card1;
     public GameObject Card2;
     public GameObject Card3;
@@ -25,6 +28,7 @@ public class PlayerManager : MonoBehaviour
         EnemyArea = GameObject.Find("EnemyArea");
         dropZone = GameObject.Find("DropZone");
         scoreText = FindObjectOfType<ScoreText>();
+
         
         scoreText.CountText.enabled = true;
         scoreText.rulesText.enabled = true;
@@ -33,41 +37,19 @@ public class PlayerManager : MonoBehaviour
         cards.Add(Card2);
         cards.Add(Card3); 
         cards.Add(Card4);
-        Deck2.Add(Card1); // Legacy 
-        Deck2.Add(Card2); 
-        Deck2.Add(Card3);
-        Deck2.Add(Card4);
     }
     public void DealCards()
     {
+        AIcontroller.InitializeAIHand();
         if (cardsPlayed <= 15 && cardsDrawn <= 15) 
-        {
-            for (var i = 0; i < 2; i++) // enemy cards
-            {
-                //Debug.Log("Deck2 card" + Deck2.Count);
-                int randomIndex = Random.Range(0, Deck2.Count);
-                GameObject Enemycard = Instantiate(Deck2[randomIndex], new Vector2(0, 0), Quaternion.identity);
-                DealtCard(Enemycard, "EnemyDealt");
-                //Debug.Log("Enemy has drawn a card");
-
-            }
-        }
-        if (cardsPlayed <= 15 && cardsDrawn <= 15) // limits player to drawing and playing 10 cards
         {
             for (var i = 0; i < 2; i++) // player cards
             {
-                //Debug.Log(cards.Count);
                 int randomIndex = Random.Range(0, cards.Count);
                 GameObject card = Instantiate(cards[randomIndex], new Vector2(0, 0), Quaternion.identity);
                 DealtCard(card, "Dealt");
-                //Debug.Log("player has drawn a card"); 
                 cardsDrawn++;
             }
-        }
-        else
-        {
-            // Handle the case where you can't deal more cards
-            return;
         }
     }
     public void PlayCard(GameObject card, string type)
