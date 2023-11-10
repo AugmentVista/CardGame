@@ -14,6 +14,9 @@ public class CardFlipper : MonoBehaviour
     public Sprite currentSprite;
     private bool isFlipped = false; // 0
 
+    public bool isEnemyCard = false;
+    public int valueOfCard;
+
     public void Start()
     {
         currentSprite = gameObject.GetComponent<Image>().sprite;

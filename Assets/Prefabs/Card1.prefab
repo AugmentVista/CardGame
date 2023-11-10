@@ -251,6 +251,8 @@ MonoBehaviour:
   CardBack: {fileID: 21300000, guid: 924559c84abe3ea47bd401319eef3433, type: 3}
   timesFlipped: 0
   currentSprite: {fileID: 0}
+  isEnemyCard: 0
+  valueOfCard: 1
 --- !u!114 &-7279952850997757495
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,9 +6,10 @@ using UnityEngine;
 
 public class WinScreen : MonoBehaviour
 {
-    public GameObject WinText;
+    public TMP_Text WinText;
     public ScoreText ScoreText;
     public int randomWinScore;
+    public int AIrandomWinScore;
     public PlayerManager PlayerManager;
     public TextMeshProUGUI rulesText;
     public TextMeshProUGUI winText;
@@ -18,26 +19,27 @@ public class WinScreen : MonoBehaviour
     {
         winText = GameObject.Find("WinText").GetComponent<TextMeshProUGUI>();
         ScoreText = GameObject.Find("CountText").GetComponent<ScoreText>();
-        WinText.SetActive(false);
+        WinText.enabled = false;
         ScoreText.WinScore = Random.Range(12, 20);
 
         randomWinScore = Random.Range(12, 20);
         rulesText.text = "Exact score of " + randomWinScore.ToString() + " to Win ";
 
-        AI_rulesText.text = "Exact score of " + randomWinScore.ToString() + " to Win ";
-
-
+        AIrandomWinScore = Random.Range(12, 20);
+        AI_rulesText.text = "AI needs " + AIrandomWinScore.ToString() + " to Win ";
+        Debug.Log(rulesText);
+        Debug.Log(rulesText.text);
     }
     public void Win()
     {
         Debug.Log("CardsDrawn = " + PlayerManager.cardsDrawn);
         if (ScoreText.WinScore == randomWinScore)
         {
-            WinText.SetActive(true);
+            WinText.enabled = true;
         }
         else if (ScoreText.WinScore != randomWinScore && PlayerManager.cardsDrawn > 10)
         {
-            WinText.SetActive(true);
+            WinText.enabled = true;
             winText.text = "You Lose";
         }
         else

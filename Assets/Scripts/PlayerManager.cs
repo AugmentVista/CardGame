@@ -18,7 +18,6 @@ public class PlayerManager : MonoBehaviour
     List<GameObject> Deck2 = new List<GameObject>();
     int cardsPlayed = 0;
     public int cardsDrawn = 0;
-    public bool IsEnemyCard = false;
 
     private void Start()
     {
@@ -34,7 +33,7 @@ public class PlayerManager : MonoBehaviour
         cards.Add(Card2);
         cards.Add(Card3); 
         cards.Add(Card4);
-        Deck2.Add(Card1);
+        Deck2.Add(Card1); // Legacy 
         Deck2.Add(Card2); 
         Deck2.Add(Card3);
         Deck2.Add(Card4);
@@ -71,16 +70,17 @@ public class PlayerManager : MonoBehaviour
             return;
         }
     }
-    public void PlayCard(GameObject card)
+    public void PlayCard(GameObject card, string type)
     {
-        DealtCard(card, "Played");
+        DealtCard(card, type);
     }
+
     public void DealtCard(GameObject card, string type)
     {
         if (type == "EnemyDealt")
-        { 
+        {
             card.transform.SetParent(EnemyArea.transform, false);
-            IsEnemyCard = true;
+            card.GetComponent<CardFlipper>().isEnemyCard = true;
         }
         else if (type == "Dealt")
         {
@@ -91,5 +91,5 @@ public class PlayerManager : MonoBehaviour
             card.transform.SetParent(dropZone.transform, false);
             cardsPlayed++;
         }
-    }   
+    }
 }

@@ -58,10 +58,9 @@ public class dragDrop : MonoBehaviour
         isDragging = false;
         if (isOverDropZone)
         {
-            transform.SetParent(dropZone.transform, false);
+            PlayerManager.PlayCard(gameObject, "Played");
             IsDraggable = false;
             cardInDropZone = true;
-            PlayerManager.PlayCard(gameObject);
         }
         else 
         {
