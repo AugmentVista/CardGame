@@ -13,8 +13,7 @@ public class CardFlipper : MonoBehaviour
     public AI_Controller AIController;
     public int timesFlipped = 0;
     public Sprite currentSprite;
-    private bool isFlipped = false; 
-
+    private bool isFlipped = false;
     public bool isEnemyCard = false;
     public int valueOfCard;
 

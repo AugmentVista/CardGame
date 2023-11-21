@@ -117,7 +117,7 @@ public class AI_Controller : MonoBehaviour
         }
     }
 
-    int CardValueCheck(int i) // for some reason this tells me -4 > 3 <3
+    int CardValueCheck(int i) 
     {
         switch (i)
         {

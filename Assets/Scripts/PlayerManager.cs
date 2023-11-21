@@ -6,6 +6,8 @@ using TMPro;
 public class PlayerManager : MonoBehaviour
 {
     public WinScreen winScreen;
+
+
     [SerializeField]
     public AI_Controller AIcontroller;
 
@@ -18,7 +20,6 @@ public class PlayerManager : MonoBehaviour
     public GameObject dropZone;
     ScoreText scoreText;
     List<GameObject> cards = new List<GameObject>();
-    List<GameObject> Deck2 = new List<GameObject>();
     int cardsPlayed = 0;
     public int cardsDrawn = 0;
 
@@ -29,7 +30,6 @@ public class PlayerManager : MonoBehaviour
         dropZone = GameObject.Find("DropZone");
         scoreText = FindObjectOfType<ScoreText>();
 
-        
         scoreText.CountText.enabled = true;
         scoreText.rulesText.enabled = true;
 

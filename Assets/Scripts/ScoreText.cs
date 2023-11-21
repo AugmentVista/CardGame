@@ -14,7 +14,7 @@ public class ScoreText : MonoBehaviour
     public int Card1Value = 1;
     public int Card2Value = 2;
     public int Card3Value = 3;
-    public int Card4Value = -4;
+    public int Card4Value = 4;
     public int WinScore;
     public int Score;
     public int AIscore;

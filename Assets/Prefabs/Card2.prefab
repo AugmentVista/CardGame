@@ -96,6 +96,7 @@ MonoBehaviour:
   Canvas: {fileID: 0}
   DropZone: {fileID: 0}
   PlayerManager: {fileID: 8940147327811738335, guid: 9f005826c7bb2294581414117fd8f414, type: 3}
+  cardFlipper: {fileID: 0}
   cardInDropZone: 0
   IsDraggable: 1
 --- !u!114 &6940669306753731105
@@ -133,7 +134,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: -1558139388875193542}
           m_TargetAssemblyTypeName: dragDrop, Assembly-CSharp
-          m_MethodName: endDrag
+          m_MethodName: EndDrag
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
