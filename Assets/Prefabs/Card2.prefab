@@ -255,4 +255,4 @@ MonoBehaviour:
   currentSprite: {fileID: 0}
   isEnemyCard: 0
   valueOfCard: 2
-  cardHealthModifier: 20
+  cardHealthModifier: 2

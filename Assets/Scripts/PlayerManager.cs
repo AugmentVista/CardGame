@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject dropZone;
     ScoreText scoreText;
     List<GameObject> cards = new List<GameObject>();
-    int cardsPlayed = 0;
+    public int cardsPlayed = 0;
     public int cardsDrawn = 0;
 
     private void Start()
@@ -39,10 +39,10 @@ public class PlayerManager : MonoBehaviour
         scoreText.CountText.enabled = true;
         scoreText.rulesText.enabled = true;
 
-        cards.Add(Card1);
-        cards.Add(Card2);
-        cards.Add(Card3); 
-        cards.Add(Card4);
+        //cards.Add(Card1);
+        //cards.Add(Card2);
+        //cards.Add(Card3); 
+        //cards.Add(Card4);
         cards.Add(CardPlus1Plus5);
         cards.Add(CardPlus3Plus2);
         cards.Add(CardPlus4Plus1);
@@ -53,9 +53,9 @@ public class PlayerManager : MonoBehaviour
     public void DealCards()
     {
         AIcontroller.InitializeAIHand();
-        if (cardsPlayed <= 15 && cardsDrawn <= 15) 
+        if (cardsPlayed <= 10 && cardsDrawn <= 10) 
         {
-            for (var i = 0; i < 2; i++) // player cards
+            for (var i = 0; i < 1; i++) // i = # cards to draw
             {
                 int randomIndex = Random.Range(0, cards.Count);
                 GameObject card = Instantiate(cards[randomIndex], new Vector2(0, 0), Quaternion.identity);

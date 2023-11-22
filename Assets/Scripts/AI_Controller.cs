@@ -3,6 +3,7 @@ using TMPro;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEditor;
+using Unity.Collections.LowLevel.Unsafe;
 
 public class AI_Controller : MonoBehaviour
 {
@@ -13,7 +14,13 @@ public class AI_Controller : MonoBehaviour
     public GameObject Card1;
     public GameObject Card2;
     public GameObject Card3;
-    public GameObject Card4; // make negative cards dumbass
+    public GameObject Card4; 
+    public GameObject CardPlus1Plus5;
+    public GameObject CardPlus3Plus2;
+    public GameObject CardPlus4Plus1;
+    public GameObject CardPlus5Minus2;
+    public GameObject CardPlus7Minus2;
+    public GameObject CardPlus9Minus5;
     public GameObject PlayerArea;
     public GameObject EnemyArea;
     public GameObject dropZone;
@@ -34,10 +41,16 @@ public class AI_Controller : MonoBehaviour
         EnemyArea = GameObject.Find("EnemyArea");
         Health = FindObjectOfType<Health_System>();
 
-        AIcards.Add(Card1);
-        AIcards.Add(Card2);
-        AIcards.Add(Card3);
-        AIcards.Add(Card4);
+        //AIcards.Add(Card1);
+        //AIcards.Add(Card2);
+        //AIcards.Add(Card3);
+        //AIcards.Add(Card4);
+        AIcards.Add(CardPlus1Plus5);
+        AIcards.Add(CardPlus3Plus2);
+        AIcards.Add(CardPlus4Plus1);
+        AIcards.Add(CardPlus5Minus2);
+        AIcards.Add(CardPlus7Minus2);
+        AIcards.Add(CardPlus9Minus5);
     }
     private void InitializeReferences()
     {
@@ -89,12 +102,15 @@ public class AI_Controller : MonoBehaviour
 
     public void InitializeAIHand()
     {
-        for (var i = 0; i < 2; i++)
+        if (playerManager.cardsPlayed <= 10 && playerManager.cardsDrawn <= 10)
         {
-            int randomIndex = Random.Range(0, AIcards.Count);
-            GameObject Enemycard = Instantiate(AIcards[randomIndex], EnemyArea.transform);
-            playerManager.DealtCard(Enemycard, "EnemyDealt");
-            AIhand.Add(Enemycard);
+            for (var i = 0; i < 1; i++) // i = # cards to draw
+            {
+                int randomIndex = Random.Range(0, AIcards.Count);
+                GameObject Enemycard = Instantiate(AIcards[randomIndex], EnemyArea.transform);
+                playerManager.DealtCard(Enemycard, "EnemyDealt");
+                AIhand.Add(Enemycard);
+            }
         }
     }
 

@@ -15,7 +15,7 @@ public class Health_System : MonoBehaviour
     private TextMeshProUGUI EnemyHealthText;
 
     int basePlayerHealth = 10;
-    int currentPlayerHealth;
+    public int currentPlayerHealth;
 
     int baseEnemyHealth = 10;
     public int currentEnemyHealth;

@@ -10,6 +10,7 @@ public class WinScreen : MonoBehaviour
     public ScoreText ScoreText;
     public int randomWinScore;
     public int AIrandomWinScore;
+    public Health_System Health;
     public PlayerManager PlayerManager;
     public TextMeshProUGUI rulesText;
     public TextMeshProUGUI winText;
@@ -19,6 +20,7 @@ public class WinScreen : MonoBehaviour
     {
         winText = GameObject.Find("WinText").GetComponent<TextMeshProUGUI>();
         ScoreText = GameObject.Find("CountText").GetComponent<ScoreText>();
+        Health = FindObjectOfType<Health_System>();
         WinText.enabled = false;
         //ScoreText.WinScore = Random.Range(15, 36);
 
@@ -37,7 +39,7 @@ public class WinScreen : MonoBehaviour
         {
             WinText.enabled = true;
         }
-        else if (ScoreText.WinScore != randomWinScore && (PlayerManager.cardsDrawn > 10 || ScoreText.AIscore == AIrandomWinScore))
+        else if (ScoreText.WinScore != randomWinScore && (PlayerManager.cardsDrawn > 10 || ScoreText.AIscore == AIrandomWinScore || Health.currentPlayerHealth <= 0))
         {
             WinText.enabled = true;
             winText.text = "You Lose";
