@@ -8,6 +8,12 @@ TagManager:
   - Card2
   - Card3
   - Card4
+  - Card+3+2
+  - Card+7-2
+  - Card+9-5
+  - Card+5-2
+  - Card+4+1
+  - Card+1+5
   layers:
   - Default
   - TransparentFX

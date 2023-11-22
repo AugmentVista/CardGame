@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: -6339164777062988402}
   - component: {fileID: -7419982358047483770}
   - component: {fileID: -2690542405938734991}
-  - component: {fileID: -7279952850997757495}
   m_Layer: 6
   m_Name: Card1
   m_TagString: Card1
@@ -250,21 +249,10 @@ MonoBehaviour:
   DropZone: {fileID: 0}
   CardFront: {fileID: 21300000, guid: a716c5da7522b9446bfe4a29bae96fad, type: 3}
   CardBack: {fileID: 21300000, guid: 924559c84abe3ea47bd401319eef3433, type: 3}
+  Health: {fileID: 0}
   AIController: {fileID: 0}
   timesFlipped: 0
   currentSprite: {fileID: 0}
   isEnemyCard: 0
   valueOfCard: 1
---- !u!114 &-7279952850997757495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3513485419635015280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11ec2d8992771be479dba9232227fec7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Canvas: {fileID: 0}
+  cardHealthModifier: 10

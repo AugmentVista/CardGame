@@ -11,16 +11,15 @@ public class ScoreText : MonoBehaviour
     public PlayerManager PlayerManager;
     public TextMeshProUGUI rulesText;
     public WinScreen winScreen;
-    public int Card1Value = 1;
-    public int Card2Value = 2;
-    public int Card3Value = 3;
-    public int Card4Value = 4;
+    //public int Card1Value = 1;
+    //public int Card2Value = 2;
+    //public int Card3Value = 3;
+    //public int Card4Value = 4;
     public int WinScore;
     public int Score;
     public int AIscore;
     public bool cardFlipBool;
 
-    // CHANGE TARGET SCORES TO HP, POSTIVE CARDS DAMAGE YOUR OPPONENT NEGATIVE CARDS HEAL YOU.
     public void OnFlip(CardFlipper cardFlipper, PlayerManager playerManager)
     {
         PlayerManager = playerManager;
@@ -33,13 +32,12 @@ public class ScoreText : MonoBehaviour
         UpdateScore(childGameObject, cardFlipper);
 
         CountText.text = "Current Score " + Score.ToString();
-        AICountText.text = "Current Score " + AIscore.ToString();
+        AICountText.text = "Enemy Score  " + AIscore.ToString();
         UpdateUI();
     }
 
     public void UpdateScore(GameObject childGameObject, CardFlipper cardFlipper)
     {
-        Debug.Log(childGameObject + " sdtgsrhrdhdsth");
         if (childGameObject.name.StartsWith("Card") && (cardFlipper.currentSprite == cardFlipper.CardBack || cardFlipper.isEnemyCard) && cardFlipBool)
         {
             if (cardFlipper.isEnemyCard)
@@ -50,7 +48,7 @@ public class ScoreText : MonoBehaviour
             if (cardFlipper.isEnemyCard == false)
             { 
                 Score += cardFlipper.valueOfCard;
-                CountText.text = "Current Score " + Score.ToString();
+                CountText.text = "Enemy Score  " + Score.ToString();
             }
         }
     }

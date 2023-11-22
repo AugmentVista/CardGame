@@ -64,8 +64,6 @@ public class dragDrop : MonoBehaviour
     }
     public void StartDrag()
     {
-        //Debug.Log("IsDraggable: " + IsDraggable);
-        //Debug.Log("IsEnemyCard: " + (cardFlipper != null ? cardFlipper.isEnemyCard.ToString() : "CardFlipper is null"));
         if (!IsDraggable || (cardFlipper != null && cardFlipper.isEnemyCard))
         {
             return;

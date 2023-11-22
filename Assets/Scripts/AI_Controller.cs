@@ -17,6 +17,7 @@ public class AI_Controller : MonoBehaviour
     public GameObject PlayerArea;
     public GameObject EnemyArea;
     public GameObject dropZone;
+    public Health_System Health;
 
     // Set the AI's target score
     List<GameObject> AIcards = new List<GameObject>();
@@ -26,11 +27,12 @@ public class AI_Controller : MonoBehaviour
     void Start()
     {
         InitializeReferences();
-       
+
 
         dropZone = GameObject.Find("DropZone");
         PlayerArea = GameObject.Find("PlayerArea");
         EnemyArea = GameObject.Find("EnemyArea");
+        Health = FindObjectOfType<Health_System>();
 
         AIcards.Add(Card1);
         AIcards.Add(Card2);
@@ -113,41 +115,59 @@ public class AI_Controller : MonoBehaviour
             selectedCard.transform.SetParent(dropZone.transform, false);
 
             scoreText.UpdateScore(selectedCard, selectedCard.GetComponent<CardFlipper>());
+            selectedCard.GetComponent<CardFlipper>().UpdateHealthSystem();
             winScreen.Win();
         }
     }
 
-    int CardValueCheck(int i) 
-    {
-        switch (i)
-        {
-            case 0:
-                return scoreText.Card1Value;
-            case 1:
-                return scoreText.Card2Value;
-            case 2:
-                return scoreText.Card3Value;
-            case 3:
-                return scoreText.Card4Value;
-            default:
-                return 0;
-        }
-    }
+    //int CardValueCheck(int i) 
+    //{
+    //    switch (i)
+    //    {
+    //        case 0:
+    //            return scoreText.Card1Value;
+    //        case 1:
+    //            return scoreText.Card2Value;
+    //        case 2:
+    //            return scoreText.Card3Value;
+    //        case 3:
+    //            return scoreText.Card4Value;
+    //        default:
+    //            return 0;
+    //    }
+    //}
 
     GameObject SelectCardToPlay()
     {
         int highestValue = int.MinValue;
         GameObject highestValueCard = null;
-        for (int i = 0; i < AIhand.Count; i++)
+        if (Health.currentEnemyHealth <= 0)
         {
-            int currentCardValue = AIhand[i].GetComponent<CardFlipper>().valueOfCard;
-
-            if (currentCardValue > highestValue)
+            for (int i = 0; i < AIhand.Count; i++)
             {
-                highestValue = currentCardValue;
-                highestValueCard = AIhand[i];
+                int currentCardValue = AIhand[i].GetComponent<CardFlipper>().cardHealthModifier;
+
+                if (currentCardValue > highestValue)
+                {
+                    highestValue = currentCardValue;
+                    highestValueCard = AIhand[i];
+                }
             }
+            return highestValueCard;
         }
-        return highestValueCard;
+        else
+        { 
+            for (int i = 0; i < AIhand.Count; i++)
+            {
+                int currentCardValue = AIhand[i].GetComponent<CardFlipper>().valueOfCard;
+
+                if (currentCardValue > highestValue)
+                {
+                    highestValue = currentCardValue;
+                    highestValueCard = AIhand[i];
+                }
+            }
+            return highestValueCard;
+        }
     }
 }

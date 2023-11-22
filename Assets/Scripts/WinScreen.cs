@@ -20,12 +20,12 @@ public class WinScreen : MonoBehaviour
         winText = GameObject.Find("WinText").GetComponent<TextMeshProUGUI>();
         ScoreText = GameObject.Find("CountText").GetComponent<ScoreText>();
         WinText.enabled = false;
-        ScoreText.WinScore = Random.Range(12, 20);
+        //ScoreText.WinScore = Random.Range(15, 36);
 
-        randomWinScore = Random.Range(12, 20);
+        randomWinScore = Random.Range(15, 31);
         rulesText.text = "Exact score of " + randomWinScore.ToString() + " to Win ";
 
-        AIrandomWinScore = Random.Range(12, 20);
+        AIrandomWinScore = Random.Range(15, 31);
         AI_rulesText.text = "AI needs " + AIrandomWinScore.ToString() + " to Win ";
         Debug.Log(rulesText);
         Debug.Log(rulesText.text);

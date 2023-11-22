@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -731.805, y: 171.33083}
+  m_AnchoredPosition: {x: -731.805, y: -220}
   m_SizeDelta: {x: 548.54, y: 195.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &66016613
@@ -180,7 +180,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play up to 10 cards, your goal is to have exactly 15 points.
+  m_text: 'Rules Text
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -257,6 +259,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 66016611}
   m_CullTransparentMesh: 1
+--- !u!1 &203582473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 203582475}
+  - component: {fileID: 203582474}
+  m_Layer: 0
+  m_Name: HealthManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &203582474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203582473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71d3234b1b128746be997e69f69712d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerManager: {fileID: 1686168856170295002}
+  ScoreText: {fileID: 1277062807}
+  HealthText: {fileID: 691249929}
+  EnemyHealthText: {fileID: 1262387687}
+  currentEnemyHealth: 0
+--- !u!4 &203582475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203582473}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 521.83466, y: 353.8656, z: 1.5612047}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &403108713
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,8 +522,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4278255377
+  m_fontColor: {r: 0.066497564, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -593,7 +644,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 640, y: -24}
+  m_AnchoredPosition: {x: 640, y: 516}
   m_SizeDelta: {x: 548.54, y: 195.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &485939183
@@ -616,7 +667,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play up to 10 cards, your goal is to have exactly 15 points.
+  m_text: 'AI rules text
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -679,7 +732,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 2.4438477}
+  m_margin: {x: 24.64206, y: 0, z: 0, w: -11.930588}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -796,7 +849,6 @@ GameObject:
   - component: {fileID: 691249928}
   - component: {fileID: 691249930}
   - component: {fileID: 691249929}
-  - component: {fileID: 691249931}
   m_Layer: 5
   m_Name: HealthText
   m_TagString: Untagged
@@ -820,7 +872,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -865.276, y: -168.55933}
+  m_AnchoredPosition: {x: -865.276, y: -337}
   m_SizeDelta: {x: 281.5981, y: 93.7843}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &691249929
@@ -922,22 +974,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691249927}
   m_CullTransparentMesh: 1
---- !u!114 &691249931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 691249927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e71d3234b1b128746be997e69f69712d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerManager: {fileID: 1686168856170295002}
-  ScoreText: {fileID: 1277062807}
-  HealthText: {fileID: 691249929}
-  EnemyHealthText: {fileID: 1262387687}
 --- !u!1 &789530692
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,6 +1014,7 @@ MonoBehaviour:
   PlayerArea: {fileID: 3795457205046441309, guid: 9a3f90f7a93983f4ca10e1729becbc5c, type: 3}
   EnemyArea: {fileID: 3618154097174121613, guid: db788cdaf92de6f409b399f6595090ad, type: 3}
   dropZone: {fileID: 7183714044091894719, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
+  Health: {fileID: 0}
 --- !u!4 &789530694
 Transform:
   m_ObjectHideFlags: 0
@@ -987,7 +1024,7 @@ Transform:
   m_GameObject: {fileID: 789530692}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1013.5547, y: 571.7587, z: 0.5305176}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1023,11 +1060,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1277062803}
-  - {fileID: 1985629605}
-  - {fileID: 472866857}
-  - {fileID: 691249928}
-  - {fileID: 1262387685}
   - {fileID: 66016612}
+  - {fileID: 691249928}
+  - {fileID: 472866857}
+  - {fileID: 1985629605}
+  - {fileID: 1262387685}
   - {fileID: 485939182}
   m_Father: {fileID: 1602105456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1244,7 +1281,6 @@ GameObject:
   - component: {fileID: 1262387685}
   - component: {fileID: 1262387688}
   - component: {fileID: 1262387687}
-  - component: {fileID: 1262387686}
   m_Layer: 5
   m_Name: EnemyHealthText
   m_TagString: Untagged
@@ -1268,25 +1304,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 773.1248, y: 316.22284}
+  m_AnchoredPosition: {x: 550, y: 316}
   m_SizeDelta: {x: 281.5981, y: 93.7843}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1262387686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262387684}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e71d3234b1b128746be997e69f69712d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerManager: {fileID: 1686168856170295002}
-  ScoreText: {fileID: 1277062807}
-  HealthText: {fileID: 691249929}
-  EnemyHealthText: {fileID: 1262387687}
 --- !u!114 &1262387687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1344,7 +1364,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 1024
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1372,7 +1392,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -20.535004, y: -43.12372, z: -51.337746, w: 2.053444}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1421,7 +1441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -792.66504, y: 344.42276}
+  m_AnchoredPosition: {x: -792.66504, y: -194}
   m_SizeDelta: {x: 426.82, y: 150.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1277062805
@@ -1538,10 +1558,6 @@ MonoBehaviour:
   PlayerManager: {fileID: 1686168856170295002}
   rulesText: {fileID: 66016613}
   winScreen: {fileID: 472866860}
-  Card1Value: 1
-  Card2Value: 2
-  Card3Value: 3
-  Card4Value: -4
   WinScore: 0
   Score: 0
   AIscore: 0
@@ -1689,7 +1705,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 699, y: -194}
+  m_AnchoredPosition: {x: 699, y: 457}
   m_SizeDelta: {x: 426.82, y: 150.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1985629608
@@ -1746,8 +1762,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1775,7 +1791,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -96.51458, y: 0, z: 0, w: 26.695633}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1806,10 +1822,6 @@ MonoBehaviour:
   PlayerManager: {fileID: 1686168856170295002}
   rulesText: {fileID: 485939183}
   winScreen: {fileID: 472866860}
-  Card1Value: 1
-  Card2Value: 2
-  Card3Value: 3
-  Card4Value: -4
   WinScore: 0
   Score: 0
   AIscore: 0
@@ -1972,6 +1984,12 @@ MonoBehaviour:
   Card2: {fileID: 2512162136882900868, guid: 805727aa65c629142a1ed52019dd602b, type: 3}
   Card3: {fileID: 5352877499072740421, guid: accd67c24e7aa604f89c67dac039b278, type: 3}
   Card4: {fileID: 5352877499072740421, guid: a175f50b84077aa4a9d374e85a2dd6ca, type: 3}
+  CardPlus1Plus5: {fileID: 3513485419635015280, guid: 65de56e2b57b64e42be6abc8043e5043, type: 3}
+  CardPlus3Plus2: {fileID: 3513485419635015280, guid: 5c6758015440a4c4aae3503acdfff2d1, type: 3}
+  CardPlus4Plus1: {fileID: 3513485419635015280, guid: 34a18e0d5fd0f8b4db0060a6a42900dc, type: 3}
+  CardPlus5Minus2: {fileID: 3513485419635015280, guid: 13e350535c55cd54ab94133603f6e4cc, type: 3}
+  CardPlus7Minus2: {fileID: 3513485419635015280, guid: 16a69bbca45464a48b489c57b79b1054, type: 3}
+  CardPlus9Minus5: {fileID: 3513485419635015280, guid: a8dd6655ae7173a49876f95ab46a3fa1, type: 3}
   PlayerArea: {fileID: 3795457205046441309, guid: 9a3f90f7a93983f4ca10e1729becbc5c, type: 3}
   EnemyArea: {fileID: 3618154097174121613, guid: db788cdaf92de6f409b399f6595090ad, type: 3}
   dropZone: {fileID: 7183714044091894719, guid: 3ad6d158e3acb16459dd559ff2ca71cc, type: 3}
@@ -2008,7 +2026,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 1.1080017, y: -2.2159882}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2019,7 +2037,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1020, y: 177}
+  m_Size: {x: 1920, y: 400}
   m_EdgeRadius: 0
 --- !u!114 &2771341378304892737
 MonoBehaviour:
@@ -2034,14 +2052,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.66610146, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 924559c84abe3ea47bd401319eef3433, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2143,10 +2161,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.85882354, g: 0.4553413, b: 0.4, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_SelectedColor: {r: 0.77254903, g: 0.21678092, b: 0.13333333, a: 1}
+    m_DisabledColor: {r: 0, g: 0.5323739, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2234,7 +2252,7 @@ Transform:
   m_GameObject: {fileID: 6368997323058009021}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 971.62573, y: 502.01553, z: -8.217144}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2350,8 +2368,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2368,15 +2386,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_fontStyle: 19
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2404,7 +2422,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 4.53957, w: 0}
+  m_margin: {x: 0, y: 0.0797348, z: 0.39304733, w: -0.11269381}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2456,8 +2474,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.1, y: -0.6}
-  m_SizeDelta: {x: 92.5815, y: 22.9286}
+  m_AnchoredPosition: {x: 0.00012922, y: 0.00050735}
+  m_SizeDelta: {x: 140, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &7146398429330022187
 RectTransform:
@@ -2515,7 +2533,7 @@ RectTransform:
   m_GameObject: {fileID: 9029387648676048119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6895851691850534015}
@@ -2523,8 +2541,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 823.54987, y: 136.93735}
-  m_SizeDelta: {x: 106.4501, y: 43.0627}
+  m_AnchoredPosition: {x: 890, y: -310}
+  m_SizeDelta: {x: 140, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8967466482370120989
 GameObject:
@@ -2581,3 +2599,4 @@ SceneRoots:
   - {fileID: 1602105456}
   - {fileID: 4288898464675119037}
   - {fileID: 789530694}
+  - {fileID: 203582475}

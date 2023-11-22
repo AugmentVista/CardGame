@@ -10,12 +10,14 @@ public class CardFlipper : MonoBehaviour
     public GameObject DropZone;
     public Sprite CardFront;
     public Sprite CardBack;
+    public Health_System Health;
     public AI_Controller AIController;
     public int timesFlipped = 0;
     public Sprite currentSprite;
     private bool isFlipped = false;
     public bool isEnemyCard = false;
     public int valueOfCard;
+    public int cardHealthModifier;
 
     public void Start()
     {
@@ -23,6 +25,7 @@ public class CardFlipper : MonoBehaviour
         DropZone = GameObject.Find("DropZone");
         ScoreText = GameObject.Find("CountText").GetComponent<ScoreText>();
         DragDrop = GetComponent<dragDrop>();
+        Health = FindObjectOfType<Health_System>();
         PlayerManager = FindObjectOfType<PlayerManager>();
         AIController = FindObjectOfType<AI_Controller>();
 
@@ -51,13 +54,13 @@ public class CardFlipper : MonoBehaviour
     }
     public void Flip()
     {
-        if (timesFlipped <= 10)
+        if (timesFlipped <= 0)
         {
                 timesFlipped++;
             if (currentSprite == CardBack)
             {
                 currentSprite = CardFront;
-                Debug.Log("Cardback == true");
+                    Debug.Log("Cardback == true");
                 gameObject.GetComponent<Image>().sprite = CardFront;
                 isFlipped = false;
                     Debug.Log("Am i Flipped?" + isFlipped.ToString());
@@ -78,12 +81,19 @@ public class CardFlipper : MonoBehaviour
         }
     }
 
+    public void UpdateHealthSystem()
+    {
+        Health.ModifyHealth(cardHealthModifier, isEnemyCard);
+    }
+
+
     public void FlipCard()
     {
-        if (timesFlipped <= 10 && DragDrop.cardInDropZone)
+        if (timesFlipped <= 0 && DragDrop.cardInDropZone)
         {
             Flip();
             ScoreText.OnFlip(this, PlayerManager);
+            UpdateHealthSystem();
             AIController.PlayAITurn();
         }
     }
