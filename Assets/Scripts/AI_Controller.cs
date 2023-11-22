@@ -157,27 +157,27 @@ public class AI_Controller : MonoBehaviour
     {
         int highestValue = int.MinValue;
         GameObject highestValueCard = null;
-        if (Health.currentEnemyHealth <= 0)
-        {
-            for (int i = 0; i < AIhand.Count; i++)
+            if (Health.currentEnemyHealth <= 0)
             {
-                int currentCardValue = AIhand[i].GetComponent<CardFlipper>().cardHealthModifier;
-
-                if (currentCardValue > highestValue)
+                for (int i = 0; i < AIhand.Count; i++)
                 {
-                    highestValue = currentCardValue;
-                    highestValueCard = AIhand[i];
+                    int currentCardValue = AIhand[i].GetComponent<CardFlipper>().cardHealthModifier;
+
+                    if (currentCardValue > highestValue && winScreen.AIrandomWinScore - scoreText.AIscore > currentCardValue)
+                    {
+                        highestValue = currentCardValue;
+                        highestValueCard = AIhand[i];
+                    }
                 }
+                return highestValueCard;
             }
-            return highestValueCard;
-        }
         else
         { 
             for (int i = 0; i < AIhand.Count; i++)
             {
                 int currentCardValue = AIhand[i].GetComponent<CardFlipper>().valueOfCard;
 
-                if (currentCardValue > highestValue)
+                if (currentCardValue > highestValue && winScreen.AIrandomWinScore - scoreText.AIscore > currentCardValue)
                 {
                     highestValue = currentCardValue;
                     highestValueCard = AIhand[i];
