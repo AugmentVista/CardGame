@@ -14,7 +14,7 @@ public class Health_System : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI EnemyHealthText;
 
-    int basePlayerHealth = 10;
+    int basePlayerHealth = 100;
     public int currentPlayerHealth;
 
     int baseEnemyHealth = 10;

@@ -29,17 +29,14 @@ public class WinScreen : MonoBehaviour
 
         AIrandomWinScore = Random.Range(15, 31);
         AI_rulesText.text = "AI needs " + AIrandomWinScore.ToString() + " to Win ";
-        Debug.Log(rulesText);
-        Debug.Log(rulesText.text);
     }
     public void Win()
     {
-        Debug.Log("CardsDrawn = " + PlayerManager.cardsDrawn);
         if (ScoreText.WinScore == randomWinScore)
         {
             WinText.enabled = true;
         }
-        else if (ScoreText.WinScore != randomWinScore && (PlayerManager.cardsDrawn > 10 || ScoreText.AIscore == AIrandomWinScore || Health.currentPlayerHealth <= 0))
+        else if (ScoreText.WinScore != randomWinScore && (PlayerManager.cardsDrawn > 100 || ScoreText.AIscore == AIrandomWinScore || Health.currentPlayerHealth <= 0))
         {
             WinText.enabled = true;
             winText.text = "You Lose";

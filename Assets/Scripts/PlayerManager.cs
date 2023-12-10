@@ -26,6 +26,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject dropZone;
     ScoreText scoreText;
     List<GameObject> cards = new List<GameObject>();
+    public List<GameObject> CardPlayOrder = new List<GameObject>();
     public int cardsPlayed = 0;
     public int cardsDrawn = 0;
 
@@ -41,7 +42,7 @@ public class PlayerManager : MonoBehaviour
 
         //cards.Add(Card1);
         //cards.Add(Card2);
-        //cards.Add(Card3); 
+        //cards.Add(Card3);
         //cards.Add(Card4);
         cards.Add(CardPlus1Plus5);
         cards.Add(CardPlus3Plus2);
@@ -53,7 +54,7 @@ public class PlayerManager : MonoBehaviour
     public void DealCards()
     {
         AIcontroller.InitializeAIHand();
-        if (cardsPlayed <= 10 && cardsDrawn <= 10) 
+        if (cardsPlayed <= 10 && cardsDrawn <= 100) 
         {
             for (var i = 0; i < 1; i++) // i = # cards to draw
             {
@@ -82,6 +83,8 @@ public class PlayerManager : MonoBehaviour
         }
         else if (type == "Played")
         {
+            CardPlayOrder.Add(card);
+            Debug.Log("Card is " + card);
             card.transform.SetParent(dropZone.transform, false);
             cardsPlayed++;
         }

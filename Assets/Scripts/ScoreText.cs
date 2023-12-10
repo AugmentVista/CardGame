@@ -23,14 +23,9 @@ public class ScoreText : MonoBehaviour
     public void OnFlip(CardFlipper cardFlipper, PlayerManager playerManager)
     {
         PlayerManager = playerManager;
-
         cardFlipBool = cardFlipper.timesFlipped <= 10;
-
-        Debug.Log("OnFlip is being called");
-
         var childGameObject = cardFlipper.gameObject;
         UpdateScore(childGameObject, cardFlipper);
-
         CountText.text = "Current Score " + Score.ToString();
         AICountText.text = "Enemy Score  " + AIscore.ToString();
         UpdateUI();

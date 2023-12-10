@@ -120,39 +120,16 @@ public class AI_Controller : MonoBehaviour
         AICardsInPlay.Add(selectedCard);
         AIhand.Remove(selectedCard);
 
-        // Ensure the selected card is an instance of a prefab
 
         if (selectedCard != null)
         {
-            // Get the current parent (EnemyArea)
             Transform currentParent = selectedCard.transform.parent;
-
-            // Change the parent to DropZone
             selectedCard.transform.SetParent(dropZone.transform, false);
-
             scoreText.UpdateScore(selectedCard, selectedCard.GetComponent<CardFlipper>());
             selectedCard.GetComponent<CardFlipper>().UpdateHealthSystem();
             winScreen.Win();
         }
     }
-
-    //int CardValueCheck(int i) 
-    //{
-    //    switch (i)
-    //    {
-    //        case 0:
-    //            return scoreText.Card1Value;
-    //        case 1:
-    //            return scoreText.Card2Value;
-    //        case 2:
-    //            return scoreText.Card3Value;
-    //        case 3:
-    //            return scoreText.Card4Value;
-    //        default:
-    //            return 0;
-    //    }
-    //}
-
     GameObject SelectCardToPlay()
     {
         int highestValue = int.MinValue;

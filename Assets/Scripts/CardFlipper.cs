@@ -33,10 +33,6 @@ public class CardFlipper : MonoBehaviour
         {
             Debug.LogError("AI_Controller component not found on the CardFlipper GameObject.");
         }
-        else
-        {
-            Debug.Log("AI_Controller component found on the CardFlipper GameObject.");
-        }
 
         UpdateVisualState();
     }
@@ -60,11 +56,10 @@ public class CardFlipper : MonoBehaviour
             if (currentSprite == CardBack)
             {
                 currentSprite = CardFront;
-                    Debug.Log("Cardback == true");
+
                 gameObject.GetComponent<Image>().sprite = CardFront;
                 isFlipped = false;
-                    Debug.Log("Am i Flipped?" + isFlipped.ToString());
-                    Debug.Log("currentSprite: " + currentSprite.name);
+
                 UpdateVisualState();
             }
             else if (currentSprite == CardFront)
