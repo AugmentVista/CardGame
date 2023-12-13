@@ -25,8 +25,10 @@ public class PlayerManager : MonoBehaviour
     public GameObject EnemyArea;
     public GameObject dropZone;
     ScoreText scoreText;
+    Health_System health_System;
     List<GameObject> cards = new List<GameObject>();
     public List<GameObject> CardPlayOrder = new List<GameObject>();
+    List<GameObject> PlayerHand = new List<GameObject>();
     public int cardsPlayed = 0;
     public int cardsDrawn = 0;
 
@@ -36,6 +38,7 @@ public class PlayerManager : MonoBehaviour
         EnemyArea = GameObject.Find("EnemyArea");
         dropZone = GameObject.Find("DropZone");
         scoreText = FindObjectOfType<ScoreText>();
+        health_System = FindObjectOfType<Health_System>();
 
         scoreText.CountText.enabled = true;
         scoreText.rulesText.enabled = true;
@@ -54,14 +57,18 @@ public class PlayerManager : MonoBehaviour
     public void DealCards()
     {
         AIcontroller.InitializeAIHand();
-        if (cardsPlayed <= 10 && cardsDrawn <= 100) 
+        if (cardsPlayed <= 10 && cardsDrawn <= 100 && PlayerHand.Count < 7) 
         {
             for (var i = 0; i < 1; i++) // i = # cards to draw
             {
                 int randomIndex = Random.Range(0, cards.Count);
                 GameObject card = Instantiate(cards[randomIndex], new Vector2(0, 0), Quaternion.identity);
                 DealtCard(card, "Dealt");
+                PlayerHand.Add(card);
                 cardsDrawn++;
+                Debug.Log(cardsDrawn);
+                //health_System.currentPlayerHealth = health_System.currentPlayerHealth - cardsDrawn;
+                health_System.ModifyHealth(-cardsDrawn, false);
             }
         }
     }
@@ -80,12 +87,14 @@ public class PlayerManager : MonoBehaviour
         else if (type == "Dealt")
         {
             card.transform.SetParent(PlayerArea.transform, false);
+            
         }
         else if (type == "Played")
         {
             CardPlayOrder.Add(card);
             Debug.Log("Card is " + card);
             card.transform.SetParent(dropZone.transform, false);
+            PlayerHand.Remove(card);
             cardsPlayed++;
         }
     }

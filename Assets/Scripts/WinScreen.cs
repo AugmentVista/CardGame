@@ -22,8 +22,6 @@ public class WinScreen : MonoBehaviour
         ScoreText = GameObject.Find("CountText").GetComponent<ScoreText>();
         Health = FindObjectOfType<Health_System>();
         WinText.enabled = false;
-        //ScoreText.WinScore = Random.Range(15, 36);
-
         randomWinScore = Random.Range(15, 31);
         rulesText.text = "Exact score of " + randomWinScore.ToString() + " to Win ";
 

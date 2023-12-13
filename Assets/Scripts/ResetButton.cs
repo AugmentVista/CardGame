@@ -12,6 +12,7 @@ public class ResetButton : MonoBehaviour
     public void OnClick()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        CardFlipper.comboCount = 0;
     }
 
 }

@@ -38,12 +38,12 @@ public class ScoreText : MonoBehaviour
             if (cardFlipper.isEnemyCard)
             {
                 AIscore += cardFlipper.valueOfCard;
-                AICountText.text = "Current Score " + AIscore.ToString();
+                AICountText.text = "AI Score " + AIscore.ToString();
             }
             if (cardFlipper.isEnemyCard == false)
             { 
                 Score += cardFlipper.valueOfCard;
-                CountText.text = "Enemy Score  " + Score.ToString();
+                CountText.text = "AI Score  " + Score.ToString();
             }
         }
     }

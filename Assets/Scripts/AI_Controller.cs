@@ -102,7 +102,7 @@ public class AI_Controller : MonoBehaviour
 
     public void InitializeAIHand()
     {
-        if (playerManager.cardsPlayed <= 10 && playerManager.cardsDrawn <= 10)
+        if (playerManager.cardsPlayed <= 10 && playerManager.cardsDrawn <= 10 && AIhand.Count < 7)
         {
             for (var i = 0; i < 1; i++) // i = # cards to draw
             {
