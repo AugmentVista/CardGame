@@ -17,8 +17,8 @@ GameObject:
   - component: {fileID: -7419982358047483770}
   - component: {fileID: -2690542405938734991}
   m_Layer: 6
-  m_Name: Card (+5, -2)
-  m_TagString: Card+5-2
+  m_Name: Card (Shark)
+  m_TagString: Card(Shark)
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +40,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 180, y: 344}
+  m_SizeDelta: {x: 180, y: 258}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &189391929784720858
 CanvasRenderer:
@@ -247,13 +247,12 @@ MonoBehaviour:
   ScoreText: {fileID: 0}
   PlayerManager: {fileID: 0}
   DropZone: {fileID: 0}
-  CardFront: {fileID: 21300000, guid: 9da9d0d4589501a4980524056cec243b, type: 3}
+  CardFront: {fileID: 21300000, guid: e3de48807f6fe234689219cdd9dce9f0, type: 3}
   CardBack: {fileID: 21300000, guid: 924559c84abe3ea47bd401319eef3433, type: 3}
   Health: {fileID: 0}
   AIController: {fileID: 0}
   timesFlipped: 0
   currentSprite: {fileID: 0}
-  comboCount: 0
   isEnemyCard: 0
-  valueOfCard: 5
-  cardHealthModifier: -2
+  valueOfCard: 15
+  cardHealthModifier: -3

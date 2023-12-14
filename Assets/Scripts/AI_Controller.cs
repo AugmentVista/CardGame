@@ -20,7 +20,7 @@ public class AI_Controller : MonoBehaviour
     public GameObject CardPlus1Plus5;
     public GameObject CardPlus3Plus2;
     public GameObject CardPlus4Plus1;
-    public GameObject CardPlus5Minus2;
+    public GameObject CardShark;
     public GameObject CardPlus7Minus2;
     public GameObject CardPlus9Minus5;
     public GameObject PlayerArea;
@@ -46,7 +46,7 @@ public class AI_Controller : MonoBehaviour
         AIcards.Add(CardPlus1Plus5);
         AIcards.Add(CardPlus3Plus2);
         AIcards.Add(CardPlus4Plus1);
-        AIcards.Add(CardPlus5Minus2);
+        AIcards.Add(CardShark);
         AIcards.Add(CardPlus7Minus2);
         AIcards.Add(CardPlus9Minus5);
     }
