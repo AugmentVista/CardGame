@@ -7,7 +7,6 @@ public class PlayerManager : MonoBehaviour
 {
     public WinScreen winScreen;
 
-
     [SerializeField]
     private AI_Controller AIcontroller;
 
@@ -18,7 +17,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject CardPlus1Plus5;
     public GameObject CardPlus3Plus2;
     public GameObject CardPlus4Plus1;
-    public GameObject SharkCard;
+    public GameObject CardShark;
     public GameObject CardPlus7Minus2;
     public GameObject CardPlus9Minus5;
     public GameObject PlayerArea;
@@ -47,7 +46,7 @@ public class PlayerManager : MonoBehaviour
         cards.Add(CardPlus1Plus5);
         cards.Add(CardPlus3Plus2);
         cards.Add(CardPlus4Plus1);
-        cards.Add(SharkCard);
+        cards.Add(CardShark);
         cards.Add(CardPlus7Minus2);
         cards.Add(CardPlus9Minus5);
     }

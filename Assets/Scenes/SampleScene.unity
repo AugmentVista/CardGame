@@ -907,8 +907,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1412,7 +1412,7 @@ MonoBehaviour:
   CardPlus1Plus5: {fileID: 3513485419635015280, guid: 65de56e2b57b64e42be6abc8043e5043, type: 3}
   CardPlus3Plus2: {fileID: 3513485419635015280, guid: 5c6758015440a4c4aae3503acdfff2d1, type: 3}
   CardPlus4Plus1: {fileID: 3513485419635015280, guid: 34a18e0d5fd0f8b4db0060a6a42900dc, type: 3}
-  CardPlus5Minus2: {fileID: 3513485419635015280, guid: 13e350535c55cd54ab94133603f6e4cc, type: 3}
+  CardShark: {fileID: 3513485419635015280, guid: 13e350535c55cd54ab94133603f6e4cc, type: 3}
   CardPlus7Minus2: {fileID: 3513485419635015280, guid: 16a69bbca45464a48b489c57b79b1054, type: 3}
   CardPlus9Minus5: {fileID: 3513485419635015280, guid: a8dd6655ae7173a49876f95ab46a3fa1, type: 3}
   PlayerArea: {fileID: 3795457205046441309, guid: 9a3f90f7a93983f4ca10e1729becbc5c, type: 3}
@@ -3239,7 +3239,7 @@ MonoBehaviour:
   CardPlus1Plus5: {fileID: 3513485419635015280, guid: 65de56e2b57b64e42be6abc8043e5043, type: 3}
   CardPlus3Plus2: {fileID: 3513485419635015280, guid: 5c6758015440a4c4aae3503acdfff2d1, type: 3}
   CardPlus4Plus1: {fileID: 3513485419635015280, guid: 34a18e0d5fd0f8b4db0060a6a42900dc, type: 3}
-  CardPlus5Minus2: {fileID: 3513485419635015280, guid: 13e350535c55cd54ab94133603f6e4cc, type: 3}
+  CardShark: {fileID: 3513485419635015280, guid: 13e350535c55cd54ab94133603f6e4cc, type: 3}
   CardPlus7Minus2: {fileID: 3513485419635015280, guid: 16a69bbca45464a48b489c57b79b1054, type: 3}
   CardPlus9Minus5: {fileID: 3513485419635015280, guid: a8dd6655ae7173a49876f95ab46a3fa1, type: 3}
   PlayerArea: {fileID: 3795457205046441309, guid: 9a3f90f7a93983f4ca10e1729becbc5c, type: 3}

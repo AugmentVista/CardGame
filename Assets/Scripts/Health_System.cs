@@ -20,7 +20,7 @@ public class Health_System : MonoBehaviour
     int basePlayerHealth = 100;
     public int currentPlayerHealth;
 
-    int baseEnemyHealth = 100;
+    int baseEnemyHealth = 50;
     public int currentEnemyHealth;
 
 

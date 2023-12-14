@@ -90,14 +90,13 @@ public class CardFlipper : MonoBehaviour
     {
         if (timesFlipped <= 0)
         {
-                timesFlipped++;
+            timesFlipped++;
             if (currentSprite == CardBack)
             {
                 currentSprite = CardFront;
 
                 gameObject.GetComponent<Image>().sprite = CardFront;
                 isFlipped = false;
-
                 UpdateVisualState();
             }
             else if (currentSprite == CardFront)

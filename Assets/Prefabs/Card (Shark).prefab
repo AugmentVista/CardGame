@@ -70,7 +70,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9da9d0d4589501a4980524056cec243b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 64231c15dc3e2004da92d1e6769358d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -247,12 +247,12 @@ MonoBehaviour:
   ScoreText: {fileID: 0}
   PlayerManager: {fileID: 0}
   DropZone: {fileID: 0}
-  CardFront: {fileID: 21300000, guid: e3de48807f6fe234689219cdd9dce9f0, type: 3}
+  CardFront: {fileID: 21300000, guid: 64231c15dc3e2004da92d1e6769358d5, type: 3}
   CardBack: {fileID: 21300000, guid: 924559c84abe3ea47bd401319eef3433, type: 3}
   Health: {fileID: 0}
   AIController: {fileID: 0}
   timesFlipped: 0
-  currentSprite: {fileID: 0}
+  currentSprite: {fileID: 21300000, guid: 64231c15dc3e2004da92d1e6769358d5, type: 3}
   isEnemyCard: 0
-  valueOfCard: 15
+  valueOfCard: 0
   cardHealthModifier: -3

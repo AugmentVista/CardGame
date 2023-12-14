@@ -14,6 +14,7 @@ TagManager:
   - Card+5-2
   - Card+4+1
   - Card+1+5
+  - Card(Shark)
   layers:
   - Default
   - TransparentFX
