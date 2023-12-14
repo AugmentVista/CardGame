@@ -3,7 +3,9 @@ using TMPro;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEditor;
-using Unity.Collections.LowLevel.Unsafe;
+using UnityEngine.XR;
+using System;
+using Unity.VisualScripting;
 
 public class AI_Controller : MonoBehaviour
 {
@@ -26,7 +28,6 @@ public class AI_Controller : MonoBehaviour
     public GameObject dropZone;
     public Health_System Health;
 
-    // Set the AI's target score
     List<GameObject> AIcards = new List<GameObject>();
     List<GameObject> AIhand = new List<GameObject>();
     List<GameObject> AICardsInPlay = new List<GameObject>();
@@ -41,10 +42,7 @@ public class AI_Controller : MonoBehaviour
         EnemyArea = GameObject.Find("EnemyArea");
         Health = FindObjectOfType<Health_System>();
 
-        //AIcards.Add(Card1);
-        //AIcards.Add(Card2);
-        //AIcards.Add(Card3);
-        //AIcards.Add(Card4);
+        
         AIcards.Add(CardPlus1Plus5);
         AIcards.Add(CardPlus3Plus2);
         AIcards.Add(CardPlus4Plus1);
@@ -102,11 +100,11 @@ public class AI_Controller : MonoBehaviour
 
     public void InitializeAIHand()
     {
-        if (playerManager.cardsPlayed <= 10 && playerManager.cardsDrawn <= 10 && AIhand.Count < 7)
+        if (AIhand.Count < 7)
         {
             for (var i = 0; i < 1; i++) // i = # cards to draw
             {
-                int randomIndex = Random.Range(0, AIcards.Count);
+                int randomIndex = UnityEngine.Random.Range(0, AIcards.Count);
                 GameObject Enemycard = Instantiate(AIcards[randomIndex], EnemyArea.transform);
                 playerManager.DealtCard(Enemycard, "EnemyDealt");
                 AIhand.Add(Enemycard);
@@ -114,53 +112,120 @@ public class AI_Controller : MonoBehaviour
         }
     }
 
-    public void PlayAITurn()
-    {
-        GameObject selectedCard = SelectCardToPlay();
-        AICardsInPlay.Add(selectedCard);
-        AIhand.Remove(selectedCard);
-
-
-        if (selectedCard != null)
-        {
-            Transform currentParent = selectedCard.transform.parent;
-            selectedCard.transform.SetParent(dropZone.transform, false);
-            scoreText.UpdateScore(selectedCard, selectedCard.GetComponent<CardFlipper>());
-            selectedCard.GetComponent<CardFlipper>().UpdateHealthSystem();
-            winScreen.Win();
-        }
-    }
-    GameObject SelectCardToPlay()
+    Tuple<GameObject, int, int, int> CombThroughAIHand()
     {
         int highestValue = int.MinValue;
         GameObject highestValueCard = null;
-            if (Health.currentEnemyHealth <= 0)
-            {
-                for (int i = 0; i < AIhand.Count; i++)
-                {
-                    int currentCardValue = AIhand[i].GetComponent<CardFlipper>().cardHealthModifier;
+        int highestCardScore = 0;
+        int highestCardHealth = 0;
+        int CardScore = 0;
+        int CardHealth = 0;
 
-                    if (currentCardValue > highestValue && winScreen.AIrandomWinScore - scoreText.AIscore > currentCardValue)
-                    {
-                        highestValue = currentCardValue;
-                        highestValueCard = AIhand[i];
-                    }
+        for (int i = 0; i < AIhand.Count; i++)
+        {
+            CardScore = AIhand[i].GetComponent<CardFlipper>().valueOfCard;
+            CardHealth = AIhand[i].GetComponent<CardFlipper>().cardHealthModifier;
+            int CardValue = CardHealth + CardScore;
+
+            if (CardValue > highestValue)
+            {
+                highestValue = CardValue;
+                highestValueCard = AIhand[i];
+                highestCardScore = CardScore;
+                highestCardHealth = CardHealth;
+
+
+                CardFlipper ScoreComponent = highestValueCard.GetComponent<CardFlipper>();
+                if (ScoreComponent != null)
+                {
+                    int score = ScoreComponent.valueOfCard;
                 }
-                return highestValueCard;
+                CardFlipper HealthComponent = highestValueCard.GetComponent<CardFlipper>();
+                if (HealthComponent != null)
+                {
+                    int health = HealthComponent.cardHealthModifier;
+                }
             }
-        else
-        { 
+        }
+        return Tuple.Create(highestValueCard, highestValue, highestCardScore, highestCardHealth);
+    }
+
+
+    public void PlayAITurn()
+    {
+        Tuple<GameObject, int, int, int> cardSelectionResult = CombThroughAIHand();
+
+        GameObject selectedCard = null;
+        int targetScore = winScreen.AIrandomWinScore;  
+
+        GameObject highestValueCard = cardSelectionResult.Item1;
+        int highestValue = cardSelectionResult.Item2;
+        int highestCardScore = cardSelectionResult.Item3;
+        int highestCardHealth = cardSelectionResult.Item4;
+
+        if (winScreen.AIrandomWinScore - scoreText.AIscore >= highestValueCard.GetComponent<CardFlipper>().valueOfCard && Health.currentEnemyHealth + highestValueCard.GetComponent<CardFlipper>().cardHealthModifier < 1)
+        {
+            selectedCard = highestValueCard;
+        }
+        else if (Health.currentEnemyHealth + highestCardHealth < 1)
+        {
+            int subHighestValue = int.MinValue;
+            int subHighestCardHealth = 0;
+            GameObject subHighestValueCard = null;
+            int CardHealth = 0;
+
             for (int i = 0; i < AIhand.Count; i++)
             {
-                int currentCardValue = AIhand[i].GetComponent<CardFlipper>().valueOfCard;
+                CardHealth = AIhand[i].GetComponent<CardFlipper>().cardHealthModifier;
 
-                if (currentCardValue > highestValue && winScreen.AIrandomWinScore - scoreText.AIscore > currentCardValue)
+                if (CardHealth > subHighestValue)
                 {
-                    highestValue = currentCardValue;
-                    highestValueCard = AIhand[i];
+                    subHighestCardHealth = CardHealth;
+                    subHighestValueCard = AIhand[i];
                 }
             }
-            return highestValueCard;
+            selectedCard = subHighestValueCard;
+        }
+        else if (scoreText.AIscore + highestCardScore <= targetScore)
+        {
+            int subHighestValue = int.MinValue;
+            int subHighestCardScore = 0;  
+            GameObject subHighestValueCard = null;
+            int CardScore = 0;
+
+            for (int i = 0; i < AIhand.Count; i++)
+            {
+                CardScore = AIhand[i].GetComponent<CardFlipper>().valueOfCard;
+
+                if (CardScore > subHighestValue)
+                {
+                    subHighestCardScore = CardScore;  
+                    subHighestValueCard = AIhand[i];
+                }
+            }
+            selectedCard = subHighestValueCard;
+        }
+        AICardsInPlay.Add(selectedCard);
+
+        if (selectedCard != null)
+        {
+            AIhand.Remove(selectedCard);
+
+            Transform currentParent = selectedCard.transform.parent;
+            selectedCard.transform.SetParent(dropZone.transform, false);
+
+            scoreText.UpdateScore(selectedCard, selectedCard.GetComponent<CardFlipper>());
+            selectedCard.GetComponent<CardFlipper>().UpdateHealthSystem();
+
+            winScreen.Win();
+            playerManager.CardsOnBoard.Add(selectedCard);
+
+            if (playerManager.CardsOnBoard.Count > 10)
+            {
+                Destroy(playerManager.CardsOnBoard[0]);
+                playerManager.CardsOnBoard.RemoveAt(0);
+            }
         }
     }
+
 }

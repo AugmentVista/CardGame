@@ -14,10 +14,13 @@ public class Health_System : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI EnemyHealthText;
 
+    
+
+
     int basePlayerHealth = 100;
     public int currentPlayerHealth;
 
-    int baseEnemyHealth = 10;
+    int baseEnemyHealth = 100;
     public int currentEnemyHealth;
 
 
@@ -28,8 +31,8 @@ public class Health_System : MonoBehaviour
         ScoreText = GameObject.Find("CountText").GetComponent<ScoreText>();
         currentPlayerHealth = basePlayerHealth;
         currentEnemyHealth = baseEnemyHealth;
-        HealthText.text = "Health " + currentPlayerHealth.ToString();
-        EnemyHealthText.text = "Health " + currentEnemyHealth.ToString();
+        HealthText.text = "Health: " + currentPlayerHealth.ToString();
+        EnemyHealthText.text = "Health: " + currentEnemyHealth.ToString();
     }
 
     public void ModifyHealth(int value, bool isEnemyCard)
@@ -39,14 +42,14 @@ public class Health_System : MonoBehaviour
             currentEnemyHealth += value;
             if (currentEnemyHealth < 0)
                 currentEnemyHealth = 0;
-            EnemyHealthText.text = "Health " + currentEnemyHealth.ToString();
+            EnemyHealthText.text = "Health: " + currentEnemyHealth.ToString();
         }
         else
         {
             currentPlayerHealth += value;
             if (currentPlayerHealth < 0)
                 currentPlayerHealth = 0;
-            HealthText.text = "Health " + currentPlayerHealth.ToString();
+            HealthText.text = "Health: " + currentPlayerHealth.ToString();
         }
     }
 }

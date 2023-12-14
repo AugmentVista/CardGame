@@ -12,7 +12,6 @@ public class HelpButton : MonoBehaviour // lol this doesn't work
         HelpScreenActive = false;
     }
 
-
     public void OnClickStart()
     {
         GameObject HelpButton = GameObject.Find("HelpScreenParent");

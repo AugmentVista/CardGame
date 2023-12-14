@@ -11,10 +11,8 @@ public class ScoreText : MonoBehaviour
     public PlayerManager PlayerManager;
     public TextMeshProUGUI rulesText;
     public WinScreen winScreen;
-    //public int Card1Value = 1;
-    //public int Card2Value = 2;
-    //public int Card3Value = 3;
-    //public int Card4Value = 4;
+    [SerializeField]
+    private TextMeshProUGUI ComboCountText;
     public int WinScore;
     public int Score;
     public int AIscore;
@@ -26,24 +24,23 @@ public class ScoreText : MonoBehaviour
         cardFlipBool = cardFlipper.timesFlipped <= 10;
         var childGameObject = cardFlipper.gameObject;
         UpdateScore(childGameObject, cardFlipper);
-        CountText.text = "Current Score " + Score.ToString();
-        AICountText.text = "Enemy Score  " + AIscore.ToString();
         UpdateUI();
     }
 
     public void UpdateScore(GameObject childGameObject, CardFlipper cardFlipper)
     {
+        ComboCountText.text = "Combo Count: " + CardFlipper.comboCount.ToString();
         if (childGameObject.name.StartsWith("Card") && (cardFlipper.currentSprite == cardFlipper.CardBack || cardFlipper.isEnemyCard) && cardFlipBool)
         {
             if (cardFlipper.isEnemyCard)
             {
                 AIscore += cardFlipper.valueOfCard;
-                AICountText.text = "AI Score " + AIscore.ToString();
+                AICountText.text = "AI Score: " + AIscore.ToString();
             }
             if (cardFlipper.isEnemyCard == false)
             { 
                 Score += cardFlipper.valueOfCard;
-                CountText.text = "AI Score  " + Score.ToString();
+                CountText.text = "Score: " + Score.ToString();
             }
         }
     }

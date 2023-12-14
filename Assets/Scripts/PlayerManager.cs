@@ -29,6 +29,7 @@ public class PlayerManager : MonoBehaviour
     List<GameObject> cards = new List<GameObject>();
     public List<GameObject> CardPlayOrder = new List<GameObject>();
     List<GameObject> PlayerHand = new List<GameObject>();
+    public List<GameObject> CardsOnBoard = new List<GameObject>();
     public int cardsPlayed = 0;
     public int cardsDrawn = 0;
 
@@ -43,10 +44,6 @@ public class PlayerManager : MonoBehaviour
         scoreText.CountText.enabled = true;
         scoreText.rulesText.enabled = true;
 
-        //cards.Add(Card1);
-        //cards.Add(Card2);
-        //cards.Add(Card3);
-        //cards.Add(Card4);
         cards.Add(CardPlus1Plus5);
         cards.Add(CardPlus3Plus2);
         cards.Add(CardPlus4Plus1);
@@ -57,7 +54,7 @@ public class PlayerManager : MonoBehaviour
     public void DealCards()
     {
         AIcontroller.InitializeAIHand();
-        if (cardsPlayed <= 10 && cardsDrawn <= 100 && PlayerHand.Count < 7) 
+        if (PlayerHand.Count < 7) 
         {
             for (var i = 0; i < 1; i++) // i = # cards to draw
             {
@@ -67,7 +64,6 @@ public class PlayerManager : MonoBehaviour
                 PlayerHand.Add(card);
                 cardsDrawn++;
                 Debug.Log(cardsDrawn);
-                //health_System.currentPlayerHealth = health_System.currentPlayerHealth - cardsDrawn;
                 health_System.ModifyHealth(-cardsDrawn, false);
             }
         }
@@ -92,10 +88,15 @@ public class PlayerManager : MonoBehaviour
         else if (type == "Played")
         {
             CardPlayOrder.Add(card);
-            Debug.Log("Card is " + card);
             card.transform.SetParent(dropZone.transform, false);
             PlayerHand.Remove(card);
             cardsPlayed++;
+            CardsOnBoard.Add(card);
+            if (CardsOnBoard.Count > 10)
+            {
+                Destroy(CardsOnBoard[0]);
+                CardsOnBoard.RemoveAt(0);
+            }
         }
     }
 }

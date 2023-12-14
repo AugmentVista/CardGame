@@ -34,10 +34,10 @@ public class WinScreen : MonoBehaviour
         {
             WinText.enabled = true;
         }
-        else if (ScoreText.WinScore != randomWinScore && (PlayerManager.cardsDrawn > 100 || ScoreText.AIscore == AIrandomWinScore || Health.currentPlayerHealth <= 0))
+        else if (ScoreText.WinScore != randomWinScore && ScoreText.AIscore == AIrandomWinScore || Health.currentPlayerHealth <= 0)
         {
             WinText.enabled = true;
-            winText.text = "You Lose";
+            winText.text = "You Lose, Try again?";
         }
         else
         {
