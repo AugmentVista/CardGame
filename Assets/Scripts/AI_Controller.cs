@@ -147,6 +147,10 @@ public class AI_Controller : MonoBehaviour
                 }
             }
         }
+        Debug.Log("Highest Value Card is: " + highestValueCard);
+        Debug.Log("Highest Card Score is: " + highestCardScore);
+        Debug.Log("Highest Value is: " + highestValue);
+        Debug.Log("Highest Card Health is: " + highestCardHealth);
         return Tuple.Create(highestValueCard, highestValue, highestCardScore, highestCardHealth);
     }
 
